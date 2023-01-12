@@ -1,2 +1,4 @@
 .*
+!.config
+!.oh-my-zsh
 *~
