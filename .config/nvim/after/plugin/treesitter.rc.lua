@@ -2,31 +2,35 @@ local status, ts = pcall(require, 'nvim-tresitter.configs')
 if (not status) then return end
 
 ts.setup({
-	highlight = {
-		enable = true,
-		disable = {},
-	},
-	indent = {
-		enable = true,
-		disable = {},
-	},
-	ensure_installed = {
-		'tsx',
-		'lua',
-		'json',
-		'css',
-		'c',
-		'python',
-		'rust',
-		'java',
-		'javascript',
-		'go',
-		'gitcommit',
-		'git_rebase',
-		'gitattributes',
-		'markdown',
-	},
-	autotag = {
-		enable = true,
-	}
+    highlight = {
+        enable = true,
+        disable = {},
+    },
+    indent = {
+        enable = true,
+        disable = {},
+    },
+    ensure_installed = {
+        'tsx',
+        'lua',
+        'json',
+        'css',
+        'c',
+        'bash',
+        'python',
+        'rust',
+        'java',
+        'javascript',
+        'go',
+        'gitcommit',
+        'git_rebase',
+        'gitattributes',
+        'markdown',
+        'make',
+        'php',
+        'ruby',
+    },
+    autotag = {
+        enable = true,
+    }
 })
