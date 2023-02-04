@@ -12,10 +12,8 @@ local fb_actions = require 'telescope'.extensions.file_browser.actions
 telescope.setup({
     defaults = {
         mappings = {
-            n = {
-                ['q'] = actions.close
-            }
-        }
+            n = { ['q'] = actions.close },
+        },
     },
     extensions = {
         file_browser = {
@@ -33,10 +31,10 @@ telescope.setup({
                     ['/'] = function()
                         vim.cmd('startinsert')
                     end
-                }
-            }
-        }
-    }
+                },
+            },
+        },
+    },
 })
 
 telescope.load_extension('file_browser')
@@ -75,5 +73,3 @@ vim.keymap.set("n", "sf", function()
         layout_config = { height = 40 }
     })
 end)
--- local opts = { noremap = true, silent = true }
--- vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin).find_files({ no_ignore = false, hidden = true })<cr>', opts)
