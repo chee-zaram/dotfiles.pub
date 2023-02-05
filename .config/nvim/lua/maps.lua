@@ -35,7 +35,7 @@ keymap.set('n', '<leader>svim', ':source $MYVIMRC<Return>')
 keymap.set('i', '<C-o>', '<esc>viwUea')
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
+keymap.set('n', '<leader>sa', 'gg<S-v>G')
 
 -- New tab
 keymap.set('n', '<leader>te', ':tabedit<Return>', { silent = true })

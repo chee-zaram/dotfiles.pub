@@ -9,62 +9,94 @@ end
 local _, packer = pcall(require, 'packer')
 
 packer.startup(function(use)
+    -- packer plugin manager
     use 'wbthomason/packer.nvim'
-    -- use 'bluz71/vim-nightfly-guicolors' -- another color scheme
+
+    -- Themes and colorschemes
     use {
         'svrana/neosolarized.nvim',
         requires = { 'tjdevries/colorbuddy.nvim' }
     }
-
-    use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+    use 'norcalli/nvim-colorizer.lua'
+    use 'folke/tokyonight.nvim'
     use 'MunifTanjim/prettier.nvim'
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use 'folke/neodev.nvim'
+    use 'navarasu/onedark.nvim' -- For atom inspired theme
 
-    use 'kyazdani42/nvim-web-devicons' -- File icons
+    -- Lsp Plugins
     use({
+        -- LSP
+        'neovim/nvim-lspconfig',
+
         "glepnir/lspsaga.nvim",
         branch = "main",
         config = function()
             require('lspsaga').setup({})
         end,
+
+        -- completion
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/nvim-cmp',
+
+        -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+        'jose-elias-alvarez/null-ls.nvim',
+
+        -- Manage lsp servers
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'folke/neodev.nvim',
     })
-    use 'L3MON4D3/LuaSnip' -- Snippet
-    use 'hoob3rt/lualine.nvim' -- Statusline
-    use 'onsails/lspkind-nvim' -- vscode-line pictograms
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in lsp
-    use 'hrsh7th/nvim-cmp' -- completion
-    use 'neovim/nvim-lspconfig' -- LSP
+
+    -- File icons
+    use 'kyazdani42/nvim-web-devicons'
+
+    -- Snippets
+    use 'L3MON4D3/LuaSnip'
+
+    -- Statusline
+    use 'hoob3rt/lualine.nvim'
+
+    -- vscode-line pictograms
+    use 'onsails/lspkind-nvim'
+
+    -- Syntax highlighting and more
     use {
         'nvim-treesitter/nvim-treesitter',
         --		run = ':TSUpdate'
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
 
+    -- Auto insert pair character for characters that are used in pairs
     use 'windwp/nvim-autopairs'
     use 'windwp/nvim-ts-autotag'
 
-    use 'nvim-lua/plenary.nvim' -- common utilities
+    -- Fuzzy finder
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
 
+    -- Display filetype icons in tabs
     use 'akinsho/nvim-bufferline.lua'
-    use 'norcalli/nvim-colorizer.lua'
 
+    -- Useful Git and GitHub plugins
     use 'lewis6991/gitsigns.nvim' -- Git signs
-    use 'dinhhuy258/git.nvim' -- For git blame & brower
-    use 'folke/tokyonight.nvim'
+    use 'dinhhuy258/git.nvim' -- For git blame & browser
+    use 'tpope/vim-fugitive' -- Use git commands from withig neovim
+    use 'tpope/vim-rhubarb' -- For opening file in GitHub front end with fugitive
+
+    -- C plugins
     use 'p00f/clangd_extensions.nvim'
-    -- install without yarn or npm
+
+    -- Get preview of markdown files as you type
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
-    --	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-    -- use 'Yggdroot/indentLine' -- Show indention with thin lines
+
+    -- Common utilities
+    use 'nvim-lua/plenary.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
+
+    -- chatgpt neovim plugin
     use({
         "jackMort/ChatGPT.nvim",
         config = function()
@@ -78,16 +110,16 @@ packer.startup(function(use)
             "nvim-telescope/telescope.nvim"
         }
     })
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-rhubarb' -- For opening file in GitHub front end with fugitive
-    -- use("simrat39/rust-tools.nvim")
-    -- Visualize lsp progress
-    -- use({
-    -- 	"j-hui/fidget.nvim",
-    -- 	config = function()
-    -- 		require("fidget").setup()
-    -- 	end
-    -- })
+
+    --[[ Visualize lsp progress
+    use({
+    	"j-hui/fidget.nvim",
+    	config = function()
+    		require("fidget").setup()
+    	end
+    }) ]]
+
+    -- File explorer type plugin
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -95,13 +127,20 @@ packer.startup(function(use)
         },
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
+
+    -- For auto-commenting
     use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
     }
-    use 'navarasu/onedark.nvim' -- For atom inspired theme
+
+    -- For debugging
+    use 'mfussenegger/nvim-dap'
+
+    -- Rust tool
+    use 'simrat39/rust-tools.nvim'
 
     local has_plugins, plugins = pcall(require, 'custom.plugins')
     if has_plugins then
