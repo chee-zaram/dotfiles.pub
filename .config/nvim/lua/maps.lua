@@ -68,7 +68,7 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 -- Start terminal in neovim
 keymap.set('n', '<leader>st', ':vsplit<Return><C-w>w:terminal<Return>', { silent = true })
 -- Escape terminal in neovim
-keymap.set('t', '<leader>et', '<C-\\><C-n>')
+keymap.set('t', '<leader>jk', '<C-\\><C-n>')
 
 -- Fugitive
 keymap.set('n', '<leader>gw', ':Gwrite<Return>')

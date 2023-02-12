@@ -1,4 +1,4 @@
-# Update and updgrade
+# Update and updgrade for pop-os!
 alias susu='sudo apt update && sudo apt -y upgrade'
 
 # Backlight brightness
@@ -28,7 +28,7 @@ alias nv='nvim'
 # Git commit with cz
 alias gcmt='g cz'
 
-# ranger shortcut
+# Ranger shortcut
 alias rr="ranger"
 
 # Using 'exa' instead of 'ls'
@@ -48,9 +48,6 @@ cl() { z "$@" && l; }
 # Fuzzy find a file in the current directory and open with editor
 nvf() { fzf -e | xargs -r -I % $EDITOR % }
 
-
-# previous alias unset by the above
-# z='zshz 2>&1'
 # Source zsh
 alias sozsh='exec zsh'
 
@@ -60,7 +57,6 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Confirm before overwritting
-alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
@@ -96,7 +92,6 @@ alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # switch between shells
-# I do not recommend switching default SHELL from bash.
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
 alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
