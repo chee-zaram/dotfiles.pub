@@ -148,7 +148,7 @@ mason_lspconfig.setup_handlers {
         require('lspconfig')[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
-            enable_format_on_save(_, _),
+            enable_format_on_save(_, bufnr),
             settings = servers[server_name],
         }
     end,
