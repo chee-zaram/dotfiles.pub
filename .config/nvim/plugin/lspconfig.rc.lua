@@ -1,6 +1,5 @@
 -- LSP configuration
-local status, protocol = pcall(require, 'vim.lsp.protocol')
-if (not status) then return end
+local protocol = require('vim.lsp.protocol')
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
@@ -57,61 +56,55 @@ protocol.CompletionItemKind = {
     '', -- TypeParameter
 }
 
-
--- You can uncomment any of the LSPs below to autoinstall it
--- Just close neovim and open again
--- Alternatively, you could use the :Mason command to see a list of LPSs you
--- can install, and click i on anyone to install it. You may need dependencies
--- for some.
---
 local servers = {
     -- clangd = {},
+    -- eslint = {},
     -- gopls = {},
     -- pylsp = {},
-    -- rust_analyzer = {
-    --     settings = {
-    --         ["rust-analyzer"] = {
-    --             imports = {
-    --                 granularity = {
-    --                     group = "module",
-    --                 },
-    --                 prefix = "self",
-    --             },
-    --             cargo = {
-    --                 buildScripts = {
-    --                     enable = true,
-    --                 },
-    --             },
-    --             procMacro = {
-    --                 enable = true
-    --             },
-    --             checkOnSave = {
-    --                 command = "clippy",
-    --             },
-    --         }
-    --     }
-    -- },
-    -- tsserver = {
-    --     filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascript.js" },
-    --     cmd = { "typescript-language-server", "--stdio" }
-    -- },
-    -- lua_ls = {
-    --     settings = {
-    --         Lua = {
-    --             diagnostics = {
-    --                 -- Get the language server to recognize the 'vim' global
-    --                 global = { 'vim' }
-    --             },
-    --
-    --             workspace = {
-    --                 -- Make the server aware of Neovim runtime files
-    --                 library = vim.api.nvim_get_runtime_file("", true),
-    --                 checkThirdParty = false,
-    --             },
-    --             telemetry = { enable = false },
-    --         },
-    --     },
-    -- },
+    rust_analyzer = {
+        settings = {
+            ["rust-analyzer"] = {
+                imports = {
+                    granularity = {
+                        group = "module",
+                    },
+                    prefix = "self",
+                },
+                cargo = {
+                    buildScripts = {
+                        enable = true,
+                    },
+                },
+                procMacro = {
+                    enable = true
+                },
+                checkOnSave = {
+                    command = "clippy",
+                },
+            }
+        }
+    },
+    tsserver = {
+        filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascript.js" },
+        cmd = { "typescript-language-server", "--stdio" }
+    },
+    lua_ls = {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    -- Get the language server to recognize the 'vim' global
+                    global = { 'vim' }
+                },
+
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                    checkThirdParty = false,
+                },
+                telemetry = { enable = false },
+            },
+        },
+    },
 }
 
 -- Setup neovim lua configuration

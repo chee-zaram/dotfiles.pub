@@ -1,29 +1,37 @@
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    is_bootstrap = true
-    vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-    vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local _, packer = pcall(require, 'packer')
+-- Leader to space
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-packer.startup(function(use)
-    -- packer plugin manager
-    use 'wbthomason/packer.nvim'
+local _, lazy = pcall(require, 'lazy')
 
+lazy.setup({
     -- Themes and colorschemes
-    use {
+    {
         'svrana/neosolarized.nvim',
-        requires = { 'tjdevries/colorbuddy.nvim' }
-    }
-    use 'norcalli/nvim-colorizer.lua'
-    use 'folke/tokyonight.nvim'
-    use 'MunifTanjim/prettier.nvim'
-    use 'navarasu/onedark.nvim' -- For atom inspired theme
+        dependencies = { 'tjdevries/colorbuddy.nvim' }
+    },
+    'norcalli/nvim-colorizer.lua',
+    'folke/tokyonight.nvim',
+    'MunifTanjim/prettier.nvim',
+    'navarasu/onedark.nvim', -- For atom inspired theme
 
+    -- Detect tabstops and shiftwidth automatically
+    'tpope/vim-sleuth',
     -- Lsp Plugins
-    use({
+    {
         -- LSP
         'neovim/nvim-lspconfig',
 
@@ -45,116 +53,100 @@ packer.startup(function(use)
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'folke/neodev.nvim',
-    })
+    },
 
     -- File icons
-    use 'kyazdani42/nvim-web-devicons'
+    -- 'kyazdani42/nvim-web-devicons',
 
     -- Snippets
-    use 'L3MON4D3/LuaSnip'
+    'L3MON4D3/LuaSnip',
 
     -- Statusline
-    use 'hoob3rt/lualine.nvim'
+    'hoob3rt/lualine.nvim',
 
     -- vscode-line pictograms
-    use 'onsails/lspkind-nvim'
+    'onsails/lspkind-nvim',
 
     -- Syntax highlighting and more
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        --		run = ':TSUpdate'
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
+        --		build = ':TSUpdate'
+        build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    },
 
     -- Auto insert pair character for characters that are used in pairs
-    use 'windwp/nvim-autopairs'
-    use 'windwp/nvim-ts-autotag'
+    'windwp/nvim-autopairs',
+    'windwp/nvim-ts-autotag',
 
     -- Fuzzy finder
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-file-browser.nvim'
+    'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope-file-browser.nvim',
 
     -- Display filetype icons in tabs
-    use 'akinsho/nvim-bufferline.lua'
+    'akinsho/nvim-bufferline.lua',
 
     -- Useful Git and GitHub plugins
-    use 'lewis6991/gitsigns.nvim' -- Git signs
-    use 'dinhhuy258/git.nvim' -- For git blame & browser
-    use 'tpope/vim-fugitive' -- Use git commands from withig neovim
-    use 'tpope/vim-rhubarb' -- For opening file in GitHub front end with fugitive
+    'lewis6991/gitsigns.nvim', -- Git signs
+    'dinhhuy258/git.nvim', -- For git blame & browser
+    'tpope/vim-fugitive', -- Use git commands from withig neovim
+    'tpope/vim-rhubarb', -- For opening file in GitHub front end with fugitive
 
     -- C plugins
-    use 'p00f/clangd_extensions.nvim'
+    'p00f/clangd_extensions.nvim',
 
     -- Get preview of markdown files as you type
-    use({
+    {
         "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
 
     -- Common utilities
-    use 'nvim-lua/plenary.nvim'
-    use 'lukas-reineke/indent-blankline.nvim'
+    'nvim-lua/plenary.nvim',
+    'lukas-reineke/indent-blankline.nvim',
 
     -- chatgpt neovim plugin
-    use({
+    {
         "jackMort/ChatGPT.nvim",
         config = function()
             require("chatgpt").setup({
                 -- optional configuration
             })
         end,
-        requires = {
+        dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim"
         }
-    })
+    },
 
-    --[[ Visualize lsp progress
-    use({
-    	"j-hui/fidget.nvim",
-    	config = function()
-    		require("fidget").setup()
-    	end
-    }) ]]
+    -- Visualize lsp progress
+    {
+        "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup()
+        end
+    },
 
     -- File explorer type plugin
-    use {
+    {
         'nvim-tree/nvim-tree.lua',
-        requires = {
+        dependencies = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
         },
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
+    },
 
     -- For auto-commenting
-    use {
+    {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
-    }
+    },
 
     -- For debugging
-    use 'mfussenegger/nvim-dap'
+    'mfussenegger/nvim-dap',
 
     -- Rust tool
-    use 'simrat39/rust-tools.nvim'
-
-    local has_plugins, plugins = pcall(require, 'custom.plugins')
-    if has_plugins then
-        plugins(use)
-    end
-
-    if is_bootstrap then
-        require('packer').sync()
-    end
-end)
-
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-    command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
-    group = packer_group,
-    pattern = vim.fn.expand '$MYVIMRC',
+    'simrat39/rust-tools.nvim',
 })

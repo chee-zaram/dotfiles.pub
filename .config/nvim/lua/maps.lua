@@ -2,6 +2,7 @@ local keymap = vim.keymap
 
 -- Leader to space
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Go to normal mode
 keymap.set('i', 'jk', '<esc>')

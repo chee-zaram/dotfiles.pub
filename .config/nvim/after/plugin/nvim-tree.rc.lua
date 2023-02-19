@@ -7,9 +7,6 @@ n_tree.setup({
     hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    ignore_buffer_on_setup = false,
-    open_on_setup = true,
-    open_on_setup_file = false,
     sort_by = "name",
     root_dirs = {},
     prefer_startup_root = false,
@@ -116,7 +113,7 @@ n_tree.setup({
         update_root = false,
         ignore_list = {},
     },
-    ignore_ft_on_setup = {},
+    -- ignore_ft_on_setup = {},
     system_open = {
         cmd = "",
         args = {},
@@ -226,3 +223,15 @@ n_tree.setup({
         },
     },
 })
+
+local function open_nvim_tree(data)
+    -- find that the opened buffer has no name
+    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+    if not no_name then return end
+
+    -- open the tree
+    require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
