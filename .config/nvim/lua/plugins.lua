@@ -149,4 +149,6 @@ lazy.setup({
 
     -- Rust tool
     'simrat39/rust-tools.nvim',
+
+    require 'autoformat',
 })

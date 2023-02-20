@@ -1,17 +1,17 @@
 -- LSP configuration
 local protocol = require('vim.lsp.protocol')
 
-local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
-local enable_format_on_save = function(_, bufnr)
-    vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup_format,
-        buffer = bufnr,
-        callback = function()
-            vim.lsp.buf.format({ bufnr = bufnr })
-        end,
-    })
-end
+-- local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+-- local enable_format_on_save = function(_, bufnr)
+--     vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+--     vim.api.nvim_create_autocmd("BufWritePre", {
+--         group = augroup_format,
+--         buffer = bufnr,
+--         callback = function()
+--             vim.lsp.buf.format({ bufnr = bufnr })
+--         end,
+--     })
+-- end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -141,7 +141,7 @@ mason_lspconfig.setup_handlers {
         require('lspconfig')[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
-            enable_format_on_save(_, bufnr),
+            -- enable_format_on_save(_, bufnr),
             settings = servers[server_name],
         }
     end,
