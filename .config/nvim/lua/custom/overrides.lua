@@ -89,6 +89,8 @@ M.conform = {
 
 		go = { "gofumpt" },
 
+		yaml = { "prettier" },
+
 		sh = { "shfmt" },
 	},
 
