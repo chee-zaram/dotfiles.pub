@@ -46,26 +46,32 @@ M.treesitter = {
 
 M.mason = {
 	ensure_installed = {
-		-- Formatters
+		-- Web dev
+		"css-lsp",
+		"html-lsp",
+		"typescript-language-server",
+		"deno",
 		"prettier",
+
+		-- Lua
+		"lua-language-server",
 		"stylua",
+
+		-- Go
+		"gopls",
 		"gofumpt",
+
+		-- Python
+		"python-lsp-server",
 		"blue",
+
+		-- Shell
+		"bash-language-server",
 		"shellcheck",
 		"shfmt",
 
-		-- LSPs
-		"gopls",
-		"python-lsp-server",
-		"bash-language-server",
-		"lua-language-server",
+		-- Configuration
 		"yaml-language-server",
-		"html-lsp",
-		"typescript-language-server",
-		"html-lsp",
-		"css-lsp",
-		"deno",
-		"prettier",
 	},
 }
 
@@ -79,7 +85,11 @@ M.conform = {
 		-- Use a sub-list to run only the first available formatter
 		javascript = { { "prettierd", "prettier" } },
 
+		typescript = { "deno" },
+
 		go = { "gofumpt" },
+
+		sh = { "shfmt" },
 	},
 
 	format_on_save = {
