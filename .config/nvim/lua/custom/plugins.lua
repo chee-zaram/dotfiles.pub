@@ -89,17 +89,67 @@ local plugins = {
 		},
 	},
 
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		require("plugins.configs.cmp")
-	-- 	end,
-	-- 	dependencies = {
-	-- 		"hrsh7th/cmp-buffer",
-	-- 		"hrsh7th/cmp-nvim-lsp",
-	-- 	},
-	-- },
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			{
+				-- snippet plugin
+				"L3MON4D3/LuaSnip",
+				dependencies = "rafamadriz/friendly-snippets",
+				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+				config = function(_, opts)
+					require("plugins.configs.others").luasnip(opts)
+				end,
+			},
+
+			-- autopairing of (){}[] etc
+			{
+				"windwp/nvim-autopairs",
+				opts = {
+					fast_wrap = {},
+					disable_filetype = { "TelescopePrompt", "vim" },
+				},
+				config = function(_, opts)
+					require("nvim-autopairs").setup(opts)
+
+					-- setup cmp for autopairs
+					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+				end,
+			},
+
+			-- cmp sources plugins
+			{
+				"saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lua",
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+			},
+		},
+		opts = function()
+			local opts = require("plugins.configs.cmp")
+			opts.sources = options.cmp.sources
+			return opts
+		end,
+
+		config = function(_, opts)
+			require("cmp").setup(opts)
+		end,
+	},
+
+	--[[ {
+		"hrsh7th/nvim-cmp",
+		lazy = false,
+		config = function()
+			require("plugins.configs.cmp")
+		end,
+		dependencies = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+		},
+	}, ]]
 
 	-- Debugger
 	{
@@ -146,7 +196,8 @@ local plugins = {
 
 	{
 		"folke/trouble.nvim",
-		lazy = false,
+		-- lazy = false,
+		keys = "<leader>tr",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function(_, opts)
 			require("trouble").setup(opts)
@@ -162,7 +213,7 @@ local plugins = {
 
 	{
 		"jcdickinson/codeium.nvim",
-		lazy = false,
+		event = "InsertEnter",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"hrsh7th/nvim-cmp",
