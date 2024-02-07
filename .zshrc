@@ -65,6 +65,7 @@ plugins=(
     web-search
     zsh-navigation-tools
     zsh-interactive-cd
+    kube-ps1
 )
 
 ### Uncomment only if zsh-vi-mode plugin is set and vi-mode is not set ###
@@ -181,6 +182,11 @@ eval "$(ssh-agent)" &>/dev/null
 # Source oh-my-zsh if it exists
 [[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH"/oh-my-zsh.sh
 
+# Add oh-my-zsh plugin kube_ps1 to display kubernetes info in prompt
+PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'
+
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+
 local IBM_CLOUD_ZSH_RC_AC="/usr/local/ibmcloud/autocomplete/zsh_autocomplete"
 [[ -f "$IBM_CLOUD_ZSH_RC_AC" ]] && source "$IBM_CLOUD_ZSH_RC_AC"
 
@@ -208,3 +214,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+fpath=(/home/cheezaram/.oh-my-zsh/custom/completions /home/cheezaram/.oh-my-zsh/plugins/kube-ps1 /home/cheezaram/.oh-my-zsh/plugins/zsh-interactive-cd /home/cheezaram/.oh-my-zsh/plugins/zsh-navigation-tools /home/cheezaram/.oh-my-zsh/plugins/web-search /home/cheezaram/.oh-my-zsh/plugins/urltools /home/cheezaram/.oh-my-zsh/plugins/tmux /home/cheezaram/.oh-my-zsh/plugins/colored-man-pages /home/cheezaram/.oh-my-zsh/plugins/z /home/cheezaram/.oh-my-zsh/plugins/vi-mode /home/cheezaram/.oh-my-zsh/custom/plugins/zsh-autosuggestions /home/cheezaram/.oh-my-zsh/plugins/git /home/cheezaram/.oh-my-zsh/functions /home/cheezaram/.oh-my-zsh/completions /home/cheezaram/.oh-my-zsh/cache/completions /usr/local/share/zsh/site-functions /usr/share/zsh/vendor-functions /usr/share/zsh/vendor-completions /usr/share/zsh/functions/Calendar /usr/share/zsh/functions/Chpwd /usr/share/zsh/functions/Completion /usr/share/zsh/functions/Completion/AIX /usr/share/zsh/functions/Completion/BSD /usr/share/zsh/functions/Completion/Base /usr/share/zsh/functions/Completion/Cygwin /usr/share/zsh/functions/Completion/Darwin /usr/share/zsh/functions/Completion/Debian /usr/share/zsh/functions/Completion/Linux /usr/share/zsh/functions/Completion/Mandriva /usr/share/zsh/functions/Completion/Redhat /usr/share/zsh/functions/Completion/Solaris /usr/share/zsh/functions/Completion/Unix /usr/share/zsh/functions/Completion/X /usr/share/zsh/functions/Completion/Zsh /usr/share/zsh/functions/Completion/openSUSE /usr/share/zsh/functions/Exceptions /usr/share/zsh/functions/MIME /usr/share/zsh/functions/Math /usr/share/zsh/functions/Misc /usr/share/zsh/functions/Newuser /usr/share/zsh/functions/Prompts /usr/share/zsh/functions/TCP /usr/share/zsh/functions/VCS_Info /usr/share/zsh/functions/VCS_Info/Backends /usr/share/zsh/functions/Zftp /usr/share/zsh/functions/Zle /home/cheezaram/.zsh_functions)
