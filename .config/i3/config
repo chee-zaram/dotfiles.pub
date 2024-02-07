@@ -17,7 +17,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 font pango:JetBrainsMono Nerd Font Propo Medium 11
 # font pango:Ubuntu Mono 14px
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 5
 # class                 border  backgr. text    indicator child_border
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 for_window [class="terminator"] opacity 0.85
