@@ -160,4 +160,22 @@ M.trouble = {
 	},
 }
 
+M.lspsaga = {
+	-- plugin = true,
+
+	n = {
+		["<C-j>"] = { "<CMD> Lspsaga diagnostic_jump_next <CR>", "Go to next error", opts = opts },
+		["K"] = { "<CMD> Lspsaga hover_doc <CR>", "Get documentation", opts = opts },
+		["<leader>f"] = { "<Cmd>Lspsaga finder<CR>", "Find identifier references", opts = opts },
+		["ca"] = { "<Cmd>Lspsaga code_action<CR>", "Show available code actions", opts = opts },
+		["gd"] = { "<Cmd>Lspsaga goto_definition<CR>", "Go to definition", opts = opts },
+		["<leader>pd"] = { "<Cmd>Lspsaga peek_definition<CR>", "Peek definition", opts = opts },
+		["gr"] = { "<Cmd>Lspsaga rename<CR>", "Rename identifier", opts = opts },
+	},
+
+	i = {
+		["<C-k"] = { "<Cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help", opts = opts },
+	},
+}
+
 return M

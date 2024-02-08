@@ -124,4 +124,8 @@ M.cmp = {
 	},
 }
 
+M.saga = {
+	server_filetype_map = {},
+}
+
 return M

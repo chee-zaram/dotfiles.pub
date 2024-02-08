@@ -17,9 +17,7 @@ local plugins = {
 			{
 				"glepnir/lspsaga.nvim",
 				branch = "main",
-				config = function()
-					require("custom.configs.lspsaga")
-				end,
+				opts = options.saga,
 			},
 
 			--[[ {
