@@ -12,6 +12,7 @@ local servers = {
 	"yamlls",
 	"tsserver",
 	"htmx",
+	"dockerls",
 	"bashls",
 	-- "bash-language-server",
 }

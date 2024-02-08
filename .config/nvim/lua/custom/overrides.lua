@@ -73,6 +73,7 @@ M.mason = {
 		-- Configuration
 		"yaml-language-server",
 		"yq",
+		"dockerfile-language-server",
 	},
 
 	ui = {
