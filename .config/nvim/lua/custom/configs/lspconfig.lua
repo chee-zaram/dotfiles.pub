@@ -12,6 +12,7 @@ local servers = {
 	"yamlls",
 	"tsserver",
 	"htmx",
+	"bashls",
 	-- "bash-language-server",
 }
 
@@ -41,15 +42,4 @@ lspconfig.gopls.setup({
 			gofumpt = true,
 		},
 	},
-})
-
--- For the bash language serve
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "sh",
-	callback = function()
-		vim.lsp.start({
-			name = "bash-language-server",
-			cmd = { "bash-language-server", "start" },
-		})
-	end,
 })
