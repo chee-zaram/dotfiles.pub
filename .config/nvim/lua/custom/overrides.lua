@@ -98,7 +98,7 @@ M.conform = {
 
 		go = { "gofumpt" },
 
-		yaml = { "prettier" },
+		yaml = { "yq" },
 
 		sh = { "shfmt" },
 	},
