@@ -43,22 +43,6 @@ lspconfig.gopls.setup({
 	},
 })
 
--- Setup mason so it can manage external tooling
-local status1, mason = pcall(require, "mason")
-if not status1 then
-	return
-end
-
-mason.setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-
 -- For the bash language serve
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "sh",

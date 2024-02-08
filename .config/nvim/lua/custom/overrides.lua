@@ -72,6 +72,15 @@ M.mason = {
 
 		-- Configuration
 		"yaml-language-server",
+		"yq",
+	},
+
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
 	},
 }
 
