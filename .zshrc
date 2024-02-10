@@ -190,6 +190,7 @@ PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'
 local IBM_CLOUD_ZSH_RC_AC="/usr/local/ibmcloud/autocomplete/zsh_autocomplete"
 [[ -f "$IBM_CLOUD_ZSH_RC_AC" ]] && source "$IBM_CLOUD_ZSH_RC_AC"
 
+export AWS_REGION="eu-west-1"
 
 # Enable autocompletion for kubectl
 [[ -f "$HOME/.kubectl_completion.sh" ]] && source "$HOME/.kubectl_completion.sh"
