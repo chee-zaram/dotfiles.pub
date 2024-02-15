@@ -58,7 +58,7 @@ plugins=(
     git
     zsh-autosuggestions
     vi-mode
-    z
+    # z
     colored-man-pages
     tmux
     urltools
@@ -76,6 +76,13 @@ plugins=(
 
 # To map 'esc' to 'jk' uncomment the next line
 bindkey -M viins 'jk' vi-cmd-mode
+
+# zoxide
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init --cmd cd zsh)"
+
+    [[ -f "$HOME/.z" ]] && zoxide import --from=z --merge "$HOME/.z"
+fi
 
 export LANG=en_US.UTF-8
 
