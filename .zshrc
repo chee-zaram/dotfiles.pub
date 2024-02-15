@@ -202,7 +202,7 @@ export AWS_REGION="eu-west-1"
 # Enable autocompletion for kubectl
 [[ -f "$HOME/.kubectl_completion.sh" ]] && source "$HOME/.kubectl_completion.sh"
 
-# This was added by zellij... I think :)
+# Added by alacrity for completions
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 export MODULAR_HOME="/home/cheezaram/.modular"
