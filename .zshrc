@@ -189,6 +189,10 @@ eval "$(ssh-agent)" &>/dev/null
 # Source oh-my-zsh if it exists
 [[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH"/oh-my-zsh.sh
 
+
+# start homebrew if installed.
+[[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Add oh-my-zsh plugin kube_ps1 to display kubernetes info in prompt
 PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'
 
