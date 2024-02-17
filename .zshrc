@@ -11,9 +11,13 @@ fi
 [[ -d "$HOME/.emacs.d/bin" ]] && PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Go setup
-[[ -d "/usr/local/go/bin" ]] && export PATH=$PATH:/usr/local/go/bin
-[[ -d "$HOME/.go" ]] && export GOPATH=$HOME/.go
-[[ -d "$GOPATH/bin" ]] && export PATH=$PATH:$GOPATH/bin
+# [[ -d "/usr/local/go/bin" ]] && export PATH=$PATH:/usr/local/go/bin
+if command -v go >/dev/null 2>&1; then
+    export GOBIN="$(go env GOPATH)/bin"
+    export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+fi
+# [[ -d "$HOME/.go" ]] && export GOPATH=$HOME/.go
+# [[ -d "$GOPATH/bin" ]] && export PATH=$PATH:$GOPATH/bin
 
 # Namespace cloud setup
 [[ -d "$HOME/.ns" ]] && export NS_ROOT="$HOME/.ns" && export PATH="$NS_ROOT/bin:$PATH"
@@ -26,7 +30,7 @@ fi
 
 # MAN setup
 [[ -d "/usr/local/man" ]] && MANPATH="/usr/local/man:$MANPATH"
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ## ZSH related ##
 # Path to your oh-my-zsh installation.
@@ -138,7 +142,7 @@ function pack () {
 }
 
 function dict () {
-    curl dict://dict.org/d:"${1}" | batcat
+    curl dict://dict.org/d:"${1}" | bat
 }
 
 # Enable tap-to-click on TouchPad:

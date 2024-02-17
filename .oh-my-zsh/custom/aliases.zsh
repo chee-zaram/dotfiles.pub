@@ -1,6 +1,3 @@
-# Update and updgrade for pop-os!
-alias susu='sudo apt update && sudo apt -y upgrade'
-
 # Backlight brightness
 alias litup='sudo light -A 5'
 alias litd='sudo light -U 5'
@@ -15,9 +12,6 @@ alias i3config='$EDITOR ~/.config/i3/config'
 # neovim configuration file
 alias nvimconfig='$EDITOR ~/.config/nvim/init.lua'
 alias cdnvim='z ~/.config/nvim/'
-
-# batcat for display files
-alias bat='batcat'
 
 # emacs shortcut
 alias em='/usr/bin/emacs -nw'
