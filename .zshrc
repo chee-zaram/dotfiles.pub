@@ -1,3 +1,6 @@
+# Added by alacrity for completions
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
 # Auto-added by p10k.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -217,8 +220,6 @@ source <(kubectl completion zsh)
 # or the one below if the file is present.
 # [[ -f "$HOME/.kubectl_completion.sh" ]] && source "$HOME/.kubectl_completion.sh"
 
-# Added by alacrity for completions
-fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 export MODULAR_HOME="/home/cheezaram/.modular"
 [[ -d "$MODULAR_HOME" ]] && export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
