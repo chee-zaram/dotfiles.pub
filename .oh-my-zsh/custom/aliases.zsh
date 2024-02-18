@@ -1,9 +1,5 @@
 alias c='clear'
 
-# Backlight brightness
-alias litup='brightnessctl set +5%'
-alias litd='brightnessctl set 5%-'
-
 # Zsh and Oh My Zsh configuration files
 alias zshconfig='$EDITOR ~/.zshrc'
 alias zshaliases='$EDITOR ~/.oh-my-zsh/custom/aliases.zsh'
