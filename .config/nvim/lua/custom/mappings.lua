@@ -15,6 +15,12 @@ M.disabled = {
 M.custom = {
 	-- Mappings in normal mode
 	n = {
+		-- Tmux neovim integration
+		["<C-h>"] = { "<cmd> TmuxNavigateLeft <cr>", "window left", opts = opts },
+		["<C-j>"] = { "<cmd> TmuxNavigateDown <cr>", "window down", opts = opts },
+		["<C-k>"] = { "<cmd> TmuxNavigateUp <cr>", "window up", opts = opts },
+		["<C-l>"] = { "<cmd> TmuxNavigateRight <cr>", "window right", opts = opts },
+
 		["<leader>w"] = { ":w<Return>", "Save current buffer", opts = opts },
 		["<leader>wo"] = { ":wq<Return>", "Save current buffer and quit", opts = opts },
 		["<leader>oo"] = { ":q!<Return>", "Quit the current buffer without saving", opts = opts },

@@ -220,6 +220,11 @@ local plugins = {
 			require("codeium").setup({})
 		end,
 	},
+
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+	},
 }
 
 return plugins
