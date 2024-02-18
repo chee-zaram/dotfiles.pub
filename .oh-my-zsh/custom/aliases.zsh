@@ -32,6 +32,7 @@ alias la="exa -a --icons --group-directories-first -sold"
 alias ll="exa --long -a --icons --group-directories-first -sold"
 alias lt="exa -aT --icons --group-directories-first -sold"
 alias l.='exa -a | egrep "^\."'
+alias tree='exa --tree --long'
 
 # Kubernetes
 # alias kubectl="minikube kubectl --"

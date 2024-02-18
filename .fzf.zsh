@@ -10,7 +10,7 @@ fi
 
 # Key bindings
 # ------------
-# source "/home/cheezaram/.fzf/shell/key-bindings.zsh"
+source "/home/cheezaram/.fzf/shell/key-bindings.zsh"
 
 # # Preview file content using bat (https://github.com/sharkdp/fd)
 export FZF_CTRL_T_OPTS="

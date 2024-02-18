@@ -11,13 +11,17 @@ fi
 [[ -d "$HOME/.emacs.d/bin" ]] && PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Go setup
-# [[ -d "/usr/local/go/bin" ]] && export PATH=$PATH:/usr/local/go/bin
-if command -v go >/dev/null 2>&1; then
-    export GOBIN="$(go env GOPATH)/bin"
-    export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
-fi
-# [[ -d "$HOME/.go" ]] && export GOPATH=$HOME/.go
-# [[ -d "$GOPATH/bin" ]] && export PATH=$PATH:$GOPATH/bin
+[[ -d "/usr/local/go/bin" ]] && export PATH=$PATH:/usr/local/go/bin
+[[ -d "$HOME/.go" ]] && export GOPATH=$HOME/.go
+[[ -d "$GOPATH/bin" ]] && export PATH=$PATH:$GOPATH/bin && export GOBIN="$(go env GOPATH)/bin"
+# 
+# OR
+#
+# When installing go using pacman
+# if command -v go >/dev/null 2>&1; then
+#     export GOBIN="$(go env GOPATH)/bin"
+#     export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+# fi
 
 # Namespace cloud setup
 [[ -d "$HOME/.ns" ]] && export NS_ROOT="$HOME/.ns" && export PATH="$NS_ROOT/bin:$PATH"
@@ -70,6 +74,7 @@ plugins=(
     zsh-navigation-tools
     zsh-interactive-cd
     kube-ps1
+    fzf-zsh-plugin
 )
 
 ### Uncomment only if zsh-vi-mode plugin is set and vi-mode is not set ###
@@ -208,7 +213,9 @@ local IBM_CLOUD_ZSH_RC_AC="/usr/local/ibmcloud/autocomplete/zsh_autocomplete"
 export AWS_REGION="eu-west-1"
 
 # Enable autocompletion for kubectl
-[[ -f "$HOME/.kubectl_completion.sh" ]] && source "$HOME/.kubectl_completion.sh"
+source <(kubectl completion zsh)
+# or the one below if the file is present.
+# [[ -f "$HOME/.kubectl_completion.sh" ]] && source "$HOME/.kubectl_completion.sh"
 
 # Added by alacrity for completions
 fpath+=${ZDOTDIR:-~}/.zsh_functions
