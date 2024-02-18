@@ -183,6 +183,11 @@ function toclip () {
     cat "$1" | xclip -selection clipboard
 }
 
+# docker_rm_stopped removes all stopped containers.
+function docker_rm_stopped() {
+    docker rm $(docker ps -a -q)
+}
+
 # For starting the ssh agent on shell startup
 eval "$(ssh-agent)" &>/dev/null
 

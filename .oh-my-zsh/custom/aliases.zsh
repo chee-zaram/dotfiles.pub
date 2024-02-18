@@ -1,6 +1,8 @@
+alias c='clear'
+
 # Backlight brightness
-alias litup='sudo light -A 5'
-alias litd='sudo light -U 5'
+alias litup='brightnessctl set +5%'
+alias litd='brightnessctl set 5%-'
 
 # Zsh and Oh My Zsh configuration files
 alias zshconfig='$EDITOR ~/.zshrc'
@@ -18,6 +20,7 @@ alias em='/usr/bin/emacs -nw'
 
 # nvim shortcut
 alias nv='nvim'
+alias vim='nvim'
 
 # Git commit with cz
 alias gcmt='g cz'
@@ -33,9 +36,6 @@ alias ll="exa --long -a --icons --group-directories-first -sold"
 alias lt="exa -aT --icons --group-directories-first -sold"
 alias l.='exa -a | egrep "^\."'
 alias tree='exa --tree --long'
-
-# Kubernetes
-# alias kubectl="minikube kubectl --"
 
 # Changing directory and listing content
 cl() { z "$@" && l; }

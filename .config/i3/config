@@ -248,3 +248,7 @@ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~
 
 # OSX-like area selection screenshots
 bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+
+# Screen brightness controls
+bindsym XF86MonoBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonoBrightnessDown exec --no-startup-id brightnessctl set 5%-
