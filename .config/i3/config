@@ -205,7 +205,8 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-# exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
+# activate polybar when I can setup wifi and battery to show up.
+exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 exec feh --bg-scale "/home/cheezaram/Pictures/Wal/bg1.jpg"
 exec --no-startup-id compton
 
