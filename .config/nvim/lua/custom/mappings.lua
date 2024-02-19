@@ -170,7 +170,7 @@ M.lspsaga = {
 	-- plugin = true,
 
 	n = {
-		["<C-j>"] = { "<CMD> Lspsaga diagnostic_jump_next <CR>", "Go to next error", opts = opts },
+		["<C-n>"] = { "<CMD> Lspsaga diagnostic_jump_next <CR>", "Go to next error", opts = opts },
 		["K"] = { "<CMD> Lspsaga hover_doc <CR>", "Get documentation", opts = opts },
 		["<leader>f"] = { "<Cmd>Lspsaga finder<CR>", "Find identifier references", opts = opts },
 		["ca"] = { "<Cmd>Lspsaga code_action<CR>", "Show available code actions", opts = opts },
