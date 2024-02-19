@@ -70,9 +70,7 @@ plugins=(
     git
     zsh-autosuggestions
     vi-mode
-    # z
     colored-man-pages
-    tmux
     urltools
     web-search
     zsh-navigation-tools

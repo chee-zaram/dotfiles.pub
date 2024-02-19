@@ -42,6 +42,10 @@ cl() { z "$@" && l; }
 # Fuzzy find a file in the current directory and open with editor
 nvf() { fzf -e | xargs -r -I % $EDITOR % }
 
+# Make sure there is a .config/systemd/user/spotifyd.service
+# And it is enabled.
+spotify() { systemctl --user restart spotifyd && spt }
+
 # Source zsh
 alias sozsh='exec zsh'
 
