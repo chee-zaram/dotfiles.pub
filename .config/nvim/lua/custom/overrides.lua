@@ -19,6 +19,7 @@ M.treesitter = {
 		"gitcommit",
 		"json",
 		"yaml",
+		"toml",
 
 		-- web dev
 		"html",
