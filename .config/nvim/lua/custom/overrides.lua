@@ -61,6 +61,7 @@ M.mason = {
 		-- Go
 		"gopls",
 		"gofumpt",
+		"golines",
 
 		-- Python
 		"python-lsp-server",
@@ -98,7 +99,7 @@ M.conform = {
 
 		typescript = { "deno" },
 
-		go = { "gofumpt" },
+		go = { "gofumpt", "golines" },
 
 		yaml = { "yq" },
 
