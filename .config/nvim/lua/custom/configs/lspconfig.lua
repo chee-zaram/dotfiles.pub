@@ -15,7 +15,6 @@ local servers = {
 	"htmx",
 	"dockerls",
 	"bashls",
-	-- "bash-language-server",
 }
 
 for _, lsp in ipairs(servers) do
