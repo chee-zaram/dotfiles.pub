@@ -149,7 +149,7 @@ function pack () {
 }
 
 function dict () {
-    curl dict://dict.org/d:"${1}" | bat
+    curl -sS dict://dict.org/d:"${1}" | bat
 }
 
 # Enable tap-to-click on TouchPad:
