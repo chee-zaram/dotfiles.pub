@@ -105,13 +105,14 @@ M.dap = {
 	n = {
 		-- Go debugger
 		["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line", opts = opts },
-		["<leader>dus"] = {
+		["<leader>so"] = { "<CMD> DapStepOver <CR>", "Step over the breakpoint", opt = opts },
+		["<leader>dui"] = {
 			function()
 				local widgets = require("dap.ui.widgets")
 				local sidebar = widgets.sidebar(widgets.scopes)
 				sidebar.open()
 			end,
-			"Open debugging sidebar",
+			"Open debugging ui",
 			opts = opts,
 		},
 	},
@@ -148,6 +149,8 @@ M.gopher = {
 		["<leader>gsj"] = { "<cmd> GoTagAdd json <CR>", "Add json struct tags", opts = opts },
 		["<leader>gsy"] = { "<cmd> GoTagAdd yaml <CR>", "Add yaml struct tags", opts = opts },
 		["<leader>gmt"] = { "<cmd> GoMod tidy <CR>", "Run go mod tidy", opts = opts },
+		["<leader>gtadd"] = { "<cmd> GoTestAdd <CR>", "Add test for the func under the cursor", opts = opts },
+		["<leader>gtall"] = { "<cmd> GoTestsAll <CR>", "Add tests for all functions in file", opts = opts },
 	},
 }
 
