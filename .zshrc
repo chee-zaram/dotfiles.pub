@@ -218,6 +218,8 @@ local IBM_CLOUD_ZSH_RC_AC="/usr/local/ibmcloud/autocomplete/zsh_autocomplete"
 [[ -f "$IBM_CLOUD_ZSH_RC_AC" ]] && source "$IBM_CLOUD_ZSH_RC_AC"
 
 export AWS_REGION="eu-west-1"
+local AWS_ZSH_COMPLETER="$HOME/.aws_zsh_completer.sh"
+[[ -f "$AWS_ZSH_COMPLETER" ]] && source "$AWS_ZSH_COMPLETER"
 
 # Enable autocompletion for kubectl
 source <(kubectl completion zsh)
