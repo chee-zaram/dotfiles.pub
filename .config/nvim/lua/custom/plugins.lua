@@ -152,6 +152,7 @@ local plugins = {
 	-- Debugger
 	{
 		"mfussenegger/nvim-dap",
+		event = "VeryLazy",
 		init = function()
 			require("core.utils").load_mappings("dap")
 		end,
@@ -225,6 +226,52 @@ local plugins = {
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
 	},
+
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = "mfussenegger/nvim-dap",
+		config = function()
+			local dap = require("dap")
+			local dapui = require("dapui")
+			require("dapui").setup()
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close()
+			end
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close()
+			end
+		end,
+	},
+
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
+		ft = { "rust" },
+	},
+
+	{
+		"saecki/crates.nvim",
+		ft = { "toml" },
+		config = function(_, opts)
+			local crates = require("crates")
+			crates.setup(opts)
+			crates.show()
+			require("core.utils").load_mappings("crates")
+		end,
+	},
+
+	{
+		"rust-lang/rust.vim",
+		ft = "rust",
+		init = function()
+			vim.g.rustfmt_autosave = 1
+		end,
+	},
+
+	"tpope/vim-obsession",
 }
 
 return plugins

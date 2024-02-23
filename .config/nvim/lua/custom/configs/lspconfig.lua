@@ -15,6 +15,10 @@ local servers = {
 	"htmx",
 	"dockerls",
 	"bashls",
+	"tailwindcss",
+	"rust_analyzer",
+	"terraformls",
+	"taplo",
 }
 
 for _, lsp in ipairs(servers) do
@@ -41,6 +45,9 @@ lspconfig.gopls.setup({
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	cmd_env = {
+		GOFLAGS = "-tags=test,e2e_test,integration_test,acceptance_test",
+	},
 	settings = {
 		gopls = {
 			gofumpt = true,
@@ -51,4 +58,21 @@ lspconfig.gopls.setup({
 			},
 		},
 	},
+})
+
+lspconfig.terraformls.setup({
+	filetypes = { "terraform" },
+	cmd = { "terraform-ls", "serve" },
+	root_dir = util.root_pattern(".terraform", ".git"),
+})
+
+lspconfig.clangd.setup({
+	on_attach = function(client, bufnr)
+		client.server_capabilities.signatureHelpProvider = false
+		on_attach(client, bufnr)
+	end,
+	capabilities = (function()
+		capabilities.offsetEncoding = { "utf-16" }
+		return capabilities
+	end)(),
 })

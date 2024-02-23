@@ -53,6 +53,11 @@ M.mason = {
 		"typescript-language-server",
 		"deno",
 		"prettier",
+		"tailwindcss-language-server",
+
+		-- C
+		"clangd",
+		"clang-format",
 
 		-- Lua
 		"lua-language-server",
@@ -72,10 +77,14 @@ M.mason = {
 		"shellcheck",
 		"shfmt",
 
+		-- Rust
+		"rust-analyzer",
+
 		-- Configuration
 		"yaml-language-server",
 		"yq",
 		"dockerfile-language-server",
+		"terraform-ls",
 	},
 
 	ui = {
