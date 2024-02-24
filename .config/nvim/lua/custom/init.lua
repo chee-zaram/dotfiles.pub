@@ -70,3 +70,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 vim.cmd.ia({ "mian", "main" })
 vim.cmd.ia({ "amin", "main" })
 vim.cmd.ia({ "inlcude", "include" })
+
+-- templ
+vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ extension = { tmpl = "tmpl" } })

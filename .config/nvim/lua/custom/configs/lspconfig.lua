@@ -19,6 +19,8 @@ local servers = {
 	"rust_analyzer",
 	"terraformls",
 	"taplo",
+	"denols",
+	"templ",
 }
 
 for _, lsp in ipairs(servers) do
@@ -75,4 +77,8 @@ lspconfig.clangd.setup({
 		capabilities.offsetEncoding = { "utf-16" }
 		return capabilities
 	end)(),
+})
+
+lspconfig.templ.setup({
+	filetypes = { "templ", "tmpl" },
 })

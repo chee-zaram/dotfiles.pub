@@ -271,7 +271,10 @@ local plugins = {
 		end,
 	},
 
-	"tpope/vim-obsession",
+	{
+		"tpope/vim-obsession",
+		lazy = false,
+	},
 }
 
 return plugins

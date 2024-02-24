@@ -33,6 +33,7 @@ M.treesitter = {
 		"python",
 		"go",
 		"bash",
+		"templ",
 
 		-- low level
 		"c",
@@ -67,6 +68,7 @@ M.mason = {
 		"gopls",
 		"gofumpt",
 		"golines",
+		"templ",
 
 		-- Python
 		"python-lsp-server",
@@ -113,6 +115,8 @@ M.conform = {
 		yaml = { "yq" },
 
 		sh = { "shfmt" },
+
+		c = { "clang-format" },
 	},
 
 	format_on_save = {

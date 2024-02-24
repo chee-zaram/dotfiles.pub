@@ -49,6 +49,9 @@ spotify() { systemctl --user restart spotifyd && spt }
 # Source zsh
 alias sozsh='exec zsh'
 
+alias kns='kubens'
+alias kc='kubectx'
+
 # Colorize grep output
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
