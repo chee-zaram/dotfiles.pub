@@ -24,14 +24,14 @@ alias gcmt='g cz'
 # Ranger shortcut
 alias rr="ranger"
 
-# Using 'exa' instead of 'ls'
-alias ls='exa --icons --group-directories-first -sold'
-alias l="exa --long --icons --group-directories-first -sold"
-alias la="exa -a --icons --group-directories-first -sold"
-alias ll="exa --long -a --icons --group-directories-first -sold"
-alias lt="exa -aT --icons --group-directories-first -sold"
-alias l.='exa -a | egrep "^\."'
-alias tree='exa --tree --long'
+# Using 'eza' instead of 'ls'
+alias ls='eza --icons --group-directories-first -sold'
+alias l="eza --long --icons --group-directories-first -sold"
+alias la="eza -a --icons --group-directories-first -sold"
+alias ll="eza --long -a --icons --group-directories-first -sold"
+alias lt="eza -aT --icons --group-directories-first -sold"
+alias l.='eza -a | egrep "^\."'
+alias tree='eza --tree --long'
 
 # Changing directory and listing content
 cl() { z "$@" && l; }
