@@ -18,3 +18,7 @@ statusbar_bg = "#1DB954"
 cmdline = "light white"
 cmdline_bg = "black"
 search_match = "light red"
+
+[credentials]
+username_cmd = "echo 312vayuplc4wmomk7z4t7oara36e"
+password_cmd = "pass accounts/spotify"
