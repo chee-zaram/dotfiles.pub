@@ -42,6 +42,13 @@ cl() { z "$@" && l; }
 # Fuzzy find a file in the current directory and open with editor
 nvf() { fzf -e | xargs -r -I % $EDITOR % }
 
+# Use rg to find files where a search-string occurs, and interactively select
+# which file to open in the editor using fzf.
+rgword() {
+    [[ $# -ne 1 ]] && echo "usage: $0 search-string" && return 1
+    rg -. -li "$1" . | cut -d":" -f1 | cut -d"/" -f2- | fzf --multi --preview "bat --style=plain --color=always --line-range :100 {}" -e | xargs -r -o nvim
+}
+
 # Make sure there is a .config/systemd/user/spotifyd.service
 # And it is enabled.
 spotify() { systemctl --user restart spotifyd && spt }
