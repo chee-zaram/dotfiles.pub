@@ -39,16 +39,11 @@ M.custom = {
 		["<leader>tp"] = { ":tabp<Return>", "Move to previous tab", opts = opts },
 
 		-- Split maps
-		["<leader>ss"] = { ":split<Return><C-w>w", "Horizontal split and move to new split", opts = opts },
+		["<leader>sh"] = { ":split<Return><C-w>w", "Horizontal split and move to new split", opts = opts },
 		["<leader>sv"] = { ":vsplit<Return><C-w>w", "Vertical split and move to new split", opts = opts },
 		["<leader>sa"] = { "gg<S-v>G", "Select all in file", opts = opts },
-		["<leader><Space>"] = { "<C-w>w", "Move to next split", opts = opts },
-
-		["sh"] = { "<C-w>h", "Move to left split", opts = opts },
-		["sk"] = { "<C-w>k", "Move to top split", opts = opts },
-		["sj"] = { "<C-w>j", "Move to bottom split", opts = opts },
-		["sl"] = { "<C-w>l", "Move to right split", opts = opts },
 		["<leader>="] = { "<C-w>=", "Resize all splits", opts = opts },
+		["<leader><Space>"] = { "<C-w>w", "Move to next split", opts = opts },
 
 		-- Terminal maps
 		["<leader>st"] = {
@@ -197,6 +192,12 @@ M.crates = {
 			end,
 			"update crates",
 		},
+	},
+}
+
+M.obsession = {
+	n = {
+		["<leader>ss"] = { "<CMD> Obsession . <CR>", "Save session file in current directory", opts = opts },
 	},
 }
 
