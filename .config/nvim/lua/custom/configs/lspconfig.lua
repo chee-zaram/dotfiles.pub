@@ -79,6 +79,11 @@ lspconfig.clangd.setup({
 	end)(),
 })
 
+-- Mak sure to install the templ cli.
 lspconfig.templ.setup({
 	filetypes = { "templ", "tmpl" },
+})
+
+lspconfig.html.setup({
+	filetypes = { "html", "templ", "tmpl" },
 })
