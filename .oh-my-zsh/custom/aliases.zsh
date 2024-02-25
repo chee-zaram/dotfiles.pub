@@ -53,6 +53,17 @@ rgword() {
 # And it is enabled.
 spotify() { systemctl --user restart spotifyd && spt }
 
+# Run sudo pacman -Syu
+pacup() {
+    echo "This command will require you to enter your password...\n"
+
+	if command -v pacman >/dev/null 2>&1; then
+		sudo pacman -Syu
+	else
+		echo "pacman not installed" && return 1
+	fi
+}
+
 # Source zsh
 alias sozsh='exec zsh'
 
