@@ -33,37 +33,6 @@ alias lt="eza -aT --icons --group-directories-first -sold"
 alias l.='eza -a | egrep "^\."'
 alias tree='eza --tree --long'
 
-# Changing directory and listing content
-cl() { z "$@" && l; }
-1l() { cd -1 && l; }
-2l() { cd -2 && l; }
-3l() { cd -3 && l; }
-
-# Fuzzy find a file in the current directory and open with editor
-nvf() { fzf -e | xargs -r -I % $EDITOR % }
-
-# Use rg to find files where a search-string occurs, and interactively select
-# which file to open in the editor using fzf.
-rgword() {
-    [[ $# -ne 1 ]] && echo "usage: $0 search-string" && return 1
-    rg -. -li "$1" . | cut -d":" -f1 | cut -d"/" -f2- | fzf --multi --preview "bat --style=plain --color=always --line-range :100 {}" -e | xargs -r -o nvim
-}
-
-# Make sure there is a .config/systemd/user/spotifyd.service
-# And it is enabled.
-spotify() { systemctl --user restart spotifyd && spt }
-
-# Run sudo pacman -Syu
-pacup() {
-    echo "This command will require you to enter your password...\n"
-
-	if command -v pacman >/dev/null 2>&1; then
-		sudo pacman -Syu
-	else
-		echo "pacman not installed" && return 1
-	fi
-}
-
 # Source zsh
 alias sozsh='exec zsh'
 
@@ -109,3 +78,5 @@ alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 alias tobash="sudo chsh $USER -s $(which bash) && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s $(which zsh) && echo 'Now log out.'"
 alias tofish="sudo chsh $USER -s $(which fish) && echo 'Now log out.'"
+
+alias luamake=/home/cheezaram/lua-language-server/3rd/luamake/luamake
