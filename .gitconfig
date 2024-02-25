@@ -1,0 +1,5 @@
+[user]
+	email = cheezaram.okeke@gmail.com
+	name = Emmanuel Chee-zaram Okeke
+[core]
+	excludesfile = /home/cheezaram/.global-gitignore
