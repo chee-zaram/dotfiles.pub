@@ -4,6 +4,20 @@ function 1l() { cd -1 && l; }
 function 2l() { cd -2 && l; }
 function 3l() { cd -3 && l; }
 
+# Create a new directory if it does not exist and cd into it.
+function mdc () {
+    test $# -ne 1 && echo "usage: $0 dir"
+    local dir=$1
+
+    if ! mkdir -p "$dir"; then
+        echo "could not create $dir" && return 1
+    fi
+
+    if ! cd "$dir"; then
+        echo "could not cd into $dir" && return 1
+    fi
+}
+
 # Fuzzy find a file in the current directory and open with editor
 function nvf() { fzf -e | xargs -r -I % $EDITOR % }
 
