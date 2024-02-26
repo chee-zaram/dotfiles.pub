@@ -91,7 +91,7 @@ bindkey -M viins 'jk' vi-cmd-mode
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init --cmd cd zsh)"
 
-    [[ -f "$HOME/.z" ]] && zoxide import --from=z --merge "$HOME/.z"
+    test -f "$HOME/.z" && zoxide import --from=z --merge "$HOME/.z"
 fi
 
 export LANG=en_US.UTF-8
@@ -107,35 +107,35 @@ fi
 eval "$(ssh-agent)" &>/dev/null
 
 # Cargo setup
-[[ -f "$HOME/.cargo/env " ]] && source "$HOME"/.cargo/env
+test -f "$HOME/.cargo/env" && source "$HOME"/.cargo/env
 
 # If not running interactively do not do anything
 [[ $- != *i* ]] && return
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+test -f ~/.p10k.zsh && source ~/.p10k.zsh
 
 # Source the fzf file if it exists
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+test -f ~/.fzf.zsh && source ~/.fzf.zsh
 
 # Source oh-my-zsh if it exists
-[[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH"/oh-my-zsh.sh
+test -f "$ZSH/oh-my-zsh.sh" && source "$ZSH"/oh-my-zsh.sh
 
 
 # start homebrew if installed.
-[[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -f "/home/linuxbrew/.linuxbrew/bin/brew" && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Add oh-my-zsh plugin kube_ps1 to display kubernetes info in prompt
 PROMPT='$(kube_ps1)'$PROMPT # or RPROMPT='$(kube_ps1)'
 
-[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+test -f ~/.kubectl_aliases && source ~/.kubectl_aliases
 
 local IBM_CLOUD_ZSH_RC_AC="/usr/local/ibmcloud/autocomplete/zsh_autocomplete"
-[[ -f "$IBM_CLOUD_ZSH_RC_AC" ]] && source "$IBM_CLOUD_ZSH_RC_AC"
+test -f "$IBM_CLOUD_ZSH_RC_AC" && source "$IBM_CLOUD_ZSH_RC_AC"
 
 export AWS_REGION="eu-west-1"
 local AWS_ZSH_COMPLETER="$HOME/.aws_zsh_completer.sh"
-[[ -f "$AWS_ZSH_COMPLETER" ]] && source "$AWS_ZSH_COMPLETER"
+test -f "$AWS_ZSH_COMPLETER" && source "$AWS_ZSH_COMPLETER"
 
 # Enable autocompletion for kubectl
 source <(kubectl completion zsh)
@@ -144,7 +144,7 @@ source <(kubectl completion zsh)
 
 
 export MODULAR_HOME="/home/cheezaram/.modular"
-[[ -d "$MODULAR_HOME" ]] && export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
+test -d "$MODULAR_HOME" && export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

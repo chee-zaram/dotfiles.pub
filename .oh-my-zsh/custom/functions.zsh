@@ -1,5 +1,5 @@
 # Changing directory and listing content
-function cl() { z "$@" && l; }
+function cl() { cd "$@" && l; }
 function 1l() { cd -1 && l; }
 function 2l() { cd -2 && l; }
 function 3l() { cd -3 && l; }
@@ -30,7 +30,7 @@ function pacup() {
 }
 
 function unpack () {
-    [[ ! -f "$1" ]] && echo "'$1' is not a valid file" && return 1
+    test ! -f "$1" && echo "'$1' is not a valid file" && return 1
 
     case "$1" in
         *.tar.bz2)        tar xjf "$1"                            ;;
@@ -53,7 +53,7 @@ function pack () {
         return 1
     fi
 
-    [[ -f "$1" ]] && echo "error: destination $1 already exists." && return 1
+    test -f "$1" && echo "error: destination $1 already exists." && return 1
 
     local lower
     lower=${(L)1}
@@ -81,7 +81,7 @@ function dict () {
 function click () {
     usage="Usage: click {on|off}"
 
-    [[ "$#" -eq 0 ]] && echo "$usage" && return 1
+    test $# -eq 0 && echo "$usage" && return 1
 
     # 0 for off, 1 for on
     case "$1" in
@@ -96,9 +96,9 @@ function click () {
 
 # Copy an entire file to the clipboard
 function toclip () {
-    [[ "$#" -eq 0 ]] && echo "usage: toclip {file}" && return 1
+    test $# -eq 0 && echo "usage: toclip {file}" && return 1
 
-    [[ ! -f "$1" ]] && echo "Error: $1 must be a file" && return 1
+    test ! -f "$1" && echo "Error: $1 must be a file" && return 1
 
     if ! command -v xclip >/dev/null 2>&1; then
         echo "Error: xclip utility not installed" && return 1
