@@ -79,11 +79,20 @@ lspconfig.clangd.setup({
 	end)(),
 })
 
--- Mak sure to install the templ cli.
+-- Make sure to install the templ cli.
 lspconfig.templ.setup({
-	filetypes = { "templ", "tmpl" },
+	filetypes = { "templ" },
 })
 
 lspconfig.html.setup({
-	filetypes = { "html", "templ", "tmpl" },
+	filetypes = { "html" },
+})
+
+lspconfig.tailwindcss.setup({
+	filetypes = { "astro", "javascript", "typescript", "react" },
+	-- init_options = { userLanguages = { templ = "html" } },
+})
+
+lspconfig.htmx.setup({
+	filetypes = { "html" },
 })
