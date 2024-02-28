@@ -56,6 +56,7 @@ COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 3
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # For autocompletion
 autoload -Uz compinit; compinit; _comp_options+=(globdots)
@@ -75,7 +76,7 @@ plugins=(
     zsh-navigation-tools
     zsh-interactive-cd
     kube-ps1
-    fzf-zsh-plugin
+    fzf-zsh-plugin fzf-tab
 )
 
 ### Uncomment only if zsh-vi-mode plugin is set and vi-mode is not set ###
