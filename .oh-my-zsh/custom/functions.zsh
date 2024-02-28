@@ -4,8 +4,9 @@ function 1l() { cd -1 && l; }
 function 2l() { cd -2 && l; }
 function 3l() { cd -3 && l; }
 
-# Create a new directory if it does not exist and cd into it.
-function mdc () {
+# mkcd creates a new directory if it does not exist and changes directory
+# into it.
+function mkcd () {
     test $# -ne 1 && echo "usage: $0 dir"
     local dir=$1
 
