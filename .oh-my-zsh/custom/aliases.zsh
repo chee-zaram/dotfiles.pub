@@ -80,3 +80,5 @@ alias tozsh="sudo chsh $USER -s $(which zsh) && echo 'Now log out.'"
 alias tofish="sudo chsh $USER -s $(which fish) && echo 'Now log out.'"
 
 alias luamake=/home/cheezaram/lua-language-server/3rd/luamake/luamake
+
+alias open='loupe'
