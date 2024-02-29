@@ -201,4 +201,16 @@ M.obsession = {
 	},
 }
 
+M.code_snap_preview = {
+	n = {
+		["<leader>csp"] = { "<CMD> CodeSnapPreviewOn <CR>", "Open a code snap windo in the browser", opts = opts },
+	},
+}
+
+M.nvim_silicon = {
+	v = {
+		["<leader>sc"] = { ":Silicon <CR> ", "Screenshot Code", opts = opts },
+	},
+}
+
 return M

@@ -275,6 +275,28 @@ local plugins = {
 		"tpope/vim-obsession",
 		lazy = false,
 	},
+
+	{
+		"mistricky/codesnap.nvim",
+		lazy = "true",
+		build = "make",
+		cmd = "CodeSnapPreviewOn",
+		opts = options.code_snap_preview,
+		config = function(_, opts)
+			require("codesnap").setup(opts)
+		end,
+	},
+
+	-- Make sure to install to your system all the fonts specified
+	-- in your overrides.
+	{
+		"michaelrommel/nvim-silicon",
+		lazy = true,
+		cmd = "Silicon",
+		config = function()
+			require("silicon").setup(options.nvim_silicon)
+		end,
+	},
 }
 
 return plugins

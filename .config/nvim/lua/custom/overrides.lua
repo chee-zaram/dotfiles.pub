@@ -155,4 +155,21 @@ M.saga = {
 	server_filetype_map = {},
 }
 
+M.code_snap_preview = {
+	-- mac_window_bar = false,
+	watermark = "Chee-zaram Okeke",
+	preview_title = "api.go",
+	editor_font_family = "JetBrainsMono Nerd Font",
+	watermark_font_family = "poppins",
+}
+
+M.nvim_silicon = {
+	font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+	theme = "Dracula",
+	background = "#94e2d5",
+	window_title = function()
+		return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ":t")
+	end,
+}
+
 return M
