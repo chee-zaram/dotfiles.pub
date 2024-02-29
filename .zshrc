@@ -250,7 +250,9 @@ test -f "$AWS_ZSH_COMPLETER" && source "$AWS_ZSH_COMPLETER"
 
 ################################### MODUlAR ###################################
 export MODULAR_HOME="/home/cheezaram/.modular"
-test -d "$MODULAR_HOME" && export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
+if [[ -d "$MODULAR_HOME" && ! "$PATH" == *"$MODULAR_HOME/pkg/packages.modular.com_mojo/bin"* ]]; then
+    export PATH="${PATH:+${PATH}:}$MODULAR_HOME/pkg/packages.modular.com_mojo/bin"
+fi
 
 
 #################################### Conda ####################################
