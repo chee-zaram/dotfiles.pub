@@ -36,22 +36,24 @@ vim.opt.undofile = true
 vim.opt.undodir = "/tmp/.vim/undodir"
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true
-vim.opt.smarttab = true
+vim.opt.smartcase = true
 vim.opt.breakindent = true
-vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
 vim.opt.tabstop = 4
--- vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 2
 vim.opt.incsearch = true
 vim.opt.cursorline = true
 vim.opt.ai = true -- Auto indent
 vim.opt.si = true -- Smart indent
-vim.opt.expandtab = true
 vim.opt.wrap = false -- No wrap lines
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.opt.backspace = "start,eol,indent"
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.completeopt = "menuone,noselect"
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
