@@ -9,6 +9,14 @@ M.override = {
 	Comment = {
 		italic = true,
 	},
+
+	Conditional = {
+		italic = true,
+	},
+
+	NvimTreeOpenedFolderName = {
+		italic = true,
+	},
 }
 
 ---@type HLTable
