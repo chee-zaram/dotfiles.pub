@@ -17,6 +17,10 @@ M.override = {
 	NvimTreeOpenedFolderName = {
 		italic = true,
 	},
+
+	Identifier = {
+		italic = true,
+	},
 }
 
 ---@type HLTable
