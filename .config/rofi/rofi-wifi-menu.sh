@@ -1,81 +1,117 @@
 #!/usr/bin/env bash
-#
-# This script depends on iwctl, nmcli, libnotify and rofi.
-# It displays a list of all available wifi networks and lets you pick which
-# to connect to, prompting for a passphrase if needed.
 
-notify-send "Getting list of available Wi-Fi networks..."
+DEPENDENCIES=("iwctl" "nmcli" "notify-send" "rofi")
+DEVICE=""
+MODE=""
+CHOSEN_NETWORK=""
+WIFI_LIST=""
+TOGGLE="󰖩 Enable Wi-Fi"
 
-# Get the device and mode using iwctl.
-device_and_mode=$(iwctl device list | sed '1,4d' | grep -v '^$' | tr -s " " | cut -d" " -f2- | awk '{print $1} {print $5}' | tr "\n" " ")
-read -r device mode <<<"$device_and_mode"
+for dep in "${DEPENDENCIES[@]}"; do
+	if ! command -v "$dep" &>/dev/null; then
+		echo "Error: $dep is not installed. Please install it before running this script."
+		echo "All dependencies: ${DEPENDENCIES[*]}"
+		exit 1
+	fi
+done
 
-# Scan the device.
-iwctl "$mode" "$device" scan
+is_wifi_enabled() {
+	[[ $(nmcli -fields WIFI g) =~ "enabled" ]]
+}
 
-# Wait some time so the scanned networks are discovered.
-sleep 0.5
+# toggle_wifi enables or disables Wi-Fi using nmcli.
+toggle_wifi() {
+	if is_wifi_enabled; then
+		nmcli radio wifi off
+	else
+		nmcli radio wifi on
+	fi
+}
 
-# List SSID of networks on the device.
-networks=$(iwctl "$mode" "$device" get-networks)
+# notify_user displays notification by using notify-send under the hood.
+# It takes 2 arguments to be passed to notify-send.
+notify_user() {
+	notify-send "$1" "$2"
+}
 
-# TODO: Identify networks that don't need authentication and give them a differenct icon.
-#
-# Check if we are connected to a network.
-connected_network=""
-if ! (echo "$networks" | sed -n '5p' | grep '>'); then
-	sed_range="1,4d"
-else
-	# Treat connected network line specially because of the presence of '>' symbol.
-	connected_network=$(echo "$networks" | sed -n '5p' | sed 's/\*\*.*//' | sed 's/^....................//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//')
-	sed_range="1,5d"
+# get_mode_and_device sets the values of DEVICE and MODE for global use.
+get_mode_and_device() {
+	local iwctl_output
+	iwctl_output=$(iwctl device list | awk 'NR > 4 {print $2, $6}')
+
+	DEVICE=$(echo "$iwctl_output" | awk '{print $1}')
+	MODE=$(echo "$iwctl_output" | awk '{print $2}')
+
+	iwctl "$MODE" "$DEVICE" scan >/dev/null 2>&1
+	sleep 0.5 # sleep allows some time for scanning to happen.
+}
+
+# get_wifi_list returns a list of SSIDs to be displayed with some icons.
+get_wifi_list() {
+	local networks
+	networks=$(iwctl "$MODE" "$DEVICE" get-networks)
+
+	# TODO: Identify networks that don't need authentication and give them a differenct icon.
+	#
+	# Check if we are connected to a network.
+	local connected_network
+	connected_network=""
+	if [[ ! $(echo "$networks" | sed -n '5p') =~ ">" ]]; then
+		sed_range="1,4d"
+	else
+		# Treat connected network line specially because of the presence of '>' symbol.
+		connected_network=$(echo "$networks" | sed -n '5p' | sed 's/\*\*.*//' | sed 's/^....................//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//')
+		sed_range="1,5d"
+	fi
+
+	local wifi_list
+	wifi_list=$(echo "$networks" | sed "$sed_range" | grep -v '^$' | sed 's/\*.*//' | sed 's/^....//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//')
+	test -n "$connected_network" && echo -e "$connected_network\n$wifi_list"
+}
+
+get_wifi_password() {
+	rofi -dmenu -p "Password: "
+}
+
+# Main logic
+notify_user "Getting list of available Wi-Fi networks..." ""
+
+get_mode_and_device
+WIFI_LIST=$(get_wifi_list)
+
+if is_wifi_enabled; then
+	TOGGLE="󰖪 Disable Wi-Fi"
 fi
 
-wifi_list=$(echo "$networks" | sed "$sed_range" | grep -v '^$' | sed 's/\*.*//' | sed 's/^....//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//')
-test -n "$connected_network" && wifi_list="$connected_network\n$wifi_list"
+CHOSEN_NETWORK=$(echo -e "$TOGGLE\n$WIFI_LIST" | uniq -u | rofi -dmenu -i -selected-row 1 -p "Wi-Fi SSID: ")
 
-wifi_radio=$(nmcli -fields WIFI g)
-enable_wifi="󰖩 Enable Wi-Fi"
-disable_wifi="󰖪 Disable Wi-Fi"
-
-if [[ "$wifi_radio" =~ "enabled" ]]; then
-	toggle=$disable_wifi
-elif [[ "$wifi_radio" =~ "disabled" ]]; then
-	toggle=$enable_wifi
-fi
-
-# Use rofi to select wifi network.
-chosen_network=$(echo -e "$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -p "Wi-Fi SSID: ")
-
-# Get name of connection without the preceeding symbol.
-read -r chosen_id <<<"${chosen_network:2}"
-
-if [ "$chosen_network" = "" ]; then
+if [[ -z "$CHOSEN_NETWORK" ]]; then
 	exit
-elif [ "$chosen_network" = "$enable_wifi" ]; then
-	nmcli radio wifi on
-elif [ "$chosen_network" = "$disable_wifi" ]; then
-	nmcli radio wifi off
+elif [[ "$CHOSEN_NETWORK" == "$TOGGLE" ]]; then
+	toggle_wifi
+	notify_user "Wi-Fi Toggled" "Wi-Fi is now $(is_wifi_enabled && echo 'enabled' || echo 'disabled')."
+# elif is_wifi_enabled; then
 else
-	# Message to show when connection is activated successfully.
-	success_message="You are now connected to the Wi-Fi network $chosen_id."
-	failure_message="Connection could not be established to $chosen_id."
-	# Get saved connections.
+	# Get name of connection without the preceeding symbol.
+	read -r CHOSEN_ID <<<"${CHOSEN_NETWORK:2}"
+
+	success_message="You are now connected to the Wi-Fi network $CHOSEN_ID."
+	failure_message="Connection to $CHOSEN_ID could not be established."
 	saved_connections=$(nmcli -g NAME connection)
-	if [[ $(echo "$saved_connections" | grep -w "$chosen_id") = "$chosen_id" ]]; then
-		if iwctl station "$device" connect "$chosen_id"; then
-			notify-send "Connection Established" "$success_message"
+
+	if [[ $(echo "$saved_connections" | grep -w "$CHOSEN_ID") = "$CHOSEN_ID" ]]; then
+		if iwctl "$MODE" "$DEVICE" connect "$CHOSEN_ID"; then
+			notify_user "Connection Established" "$success_message"
 		else
-			notify-send "Failed" "$failure_message"
+			notify_user "Failed" "$failure_message"
 		fi
 	else
-		if [[ "$chosen_network" =~ "" ]]; then
-			wifi_password=$(rofi -dmenu -p "Password: ")
-		fi
-		if iwctl --passphrase="$wifi_password" station "$device" connect "$chosen_id"; then
-			notify-send "Connection Established" "$success_message"
+		# test "$CHOSEN_NETWORK" =~ "" && wifi_password=$(get_wifi_password)
+		wifi_password=$(get_wifi_password)
+		if iwctl --passphrase="$wifi_password" "$MODE" "$DEVICE" connect "$CHOSEN_ID"; then
+			notify_user "Connection Established" "$success_message"
 		else
-			notify-send "Failed" "$failure_message"
+			notify_user "Failed" "$failure_message"
 		fi
 	fi
 fi
