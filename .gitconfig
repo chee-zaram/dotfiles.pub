@@ -3,3 +3,5 @@
 	name = Emmanuel Chee-zaram Okeke
 [core]
 	excludesfile = /home/cheezaram/.global-gitignore
+[init]
+	defaultBranch = main
