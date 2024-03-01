@@ -20,5 +20,5 @@ cmdline_bg = "black"
 search_match = "light red"
 
 [credentials]
-username_cmd = "echo 312vayuplc4wmomk7z4t7oara36e"
-password_cmd = "pass accounts/spotify"
+username_cmd = "pass Accounts/Spotify.meta | grep -i 'userID' | cut -d' ' -f2"
+password_cmd = "pass Accounts/Spotify"
