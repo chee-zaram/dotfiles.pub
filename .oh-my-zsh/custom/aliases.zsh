@@ -9,7 +9,7 @@ alias i3config='$EDITOR ~/.config/i3/config'
 
 # neovim configuration file
 alias nvimconfig='$EDITOR ~/.config/nvim/init.lua'
-alias cdnvim='z ~/.config/nvim/'
+alias cdnvim='cd ~/.config/nvim/'
 
 # emacs shortcut
 alias em='/usr/bin/emacs -nw'
@@ -81,4 +81,7 @@ alias tofish="sudo chsh $USER -s $(which fish) && echo 'Now log out.'"
 
 alias luamake=/home/cheezaram/lua-language-server/3rd/luamake/luamake
 
+# Open image with given filename using loupe image viewer.
 alias open='loupe'
+
+alias aws="AWS_ACCESS_KEY_ID='$(pass show Credentials/AWS/Personal/key_id)' AWS_SECRET_ACCESS_KEY='$(pass show Credentials/AWS/Personal/key_secret)' aws"
