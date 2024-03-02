@@ -1,2 +1,4 @@
 [mounts]
 	path = /home/cheezaram/.password-store
+[core]
+	autopush = false
