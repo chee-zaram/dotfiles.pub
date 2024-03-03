@@ -20,12 +20,12 @@ local plugins = {
 				opts = options.saga,
 			},
 
-			--[[ {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      }, ]]
+			{
+				"nvimtools/none-ls.nvim",
+				opts = function()
+					return require("custom.configs.null-ls")
+				end,
+			},
 		},
 
 		config = function()
@@ -49,8 +49,15 @@ local plugins = {
 	},
 
 	{
-		"williamboman/mason.nvim",
-		opts = options.mason,
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		lazy = false,
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				opts = options.mason,
+			},
+		},
+		opts = options.mason_installer,
 	},
 
 	{
@@ -288,7 +295,8 @@ local plugins = {
 	},
 
 	-- Make sure to install to your system all the fonts specified
-	-- in your overrides.
+	-- in your overrides as well as the silicon binary using your os package
+	-- manager.
 	{
 		"michaelrommel/nvim-silicon",
 		lazy = true,
