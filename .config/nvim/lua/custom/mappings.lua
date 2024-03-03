@@ -137,6 +137,22 @@ M.dap_go = {
 	},
 }
 
+M.dap_python = {
+	plugin = true,
+	n = {
+		["<leader>dpm"] = {
+			function()
+				require("dap-python").test_method()
+			end,
+		},
+		["<leader>dpc"] = {
+			function()
+				require("dap-python").test_class()
+			end,
+		},
+	},
+}
+
 M.gopher = {
 	plugin = true,
 

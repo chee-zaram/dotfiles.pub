@@ -72,6 +72,7 @@ local mason_ensure_installed = {
 
 	-- Python
 	-- "python-lsp-server",
+	"debugpy",
 	"pyright",
 	"ruff-lsp",
 	"mypy",
