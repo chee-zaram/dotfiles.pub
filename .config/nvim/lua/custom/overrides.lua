@@ -50,6 +50,7 @@ local mason_ensure_installed = {
 	-- Web dev
 	"css-lsp",
 	"html-lsp",
+	"htmx-lsp",
 	"typescript-language-server",
 	"deno",
 	"prettier",
