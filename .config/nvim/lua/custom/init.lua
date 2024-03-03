@@ -76,3 +76,11 @@ vim.cmd.ia({ "inlcude", "include" })
 -- templ
 vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({ extension = { tmpl = "tmpl" } })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlights yanked text",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})

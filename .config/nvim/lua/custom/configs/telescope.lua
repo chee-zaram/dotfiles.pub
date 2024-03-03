@@ -100,3 +100,7 @@ vim.keymap.set("n", "<leader>/", function()
 		previewer = false,
 	}))
 end, { desc = "[/] Fuzzily search in current buffer" })
+
+vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "Search current word" })
+vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, { desc = "Symbols in the current document" })
+vim.keymap.set("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, { desc = "Symbols across entire project" })
