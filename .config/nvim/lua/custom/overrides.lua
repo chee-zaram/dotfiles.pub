@@ -46,49 +46,51 @@ M.treesitter = {
 	},
 }
 
+local mason_ensure_installed = {
+	-- Web dev
+	"css-lsp",
+	"html-lsp",
+	"typescript-language-server",
+	"deno",
+	"prettier",
+	"tailwindcss-language-server",
+
+	-- C
+	"clangd",
+	"clang-format",
+
+	-- Lua
+	"lua-language-server",
+	"stylua",
+
+	-- Go
+	"gopls",
+	"gofumpt",
+	"golines",
+	"templ",
+
+	-- Python
+	-- "python-lsp-server",
+	"pyright",
+	"ruff-lsp",
+	"mypy",
+	-- "autopep8",
+
+	-- Shell
+	"bash-language-server",
+	"shfmt",
+
+	-- Rust
+	"rust-analyzer",
+
+	-- Configuration
+	"yaml-language-server",
+	"dockerfile-language-server",
+	"terraform-ls",
+}
+
 M.mason = {
-	ensure_installed = {
-		-- Web dev
-		"css-lsp",
-		"html-lsp",
-		"typescript-language-server",
-		"deno",
-		"prettier",
-		"tailwindcss-language-server",
-
-		-- C
-		"clangd",
-		"clang-format",
-
-		-- Lua
-		"lua-language-server",
-		"stylua",
-
-		-- Go
-		"gopls",
-		"gofumpt",
-		"golines",
-		"templ",
-
-		-- Python
-		"python-lsp-server",
-		"blue",
-
-		-- Shell
-		"bash-language-server",
-		"shellcheck",
-		"shfmt",
-
-		-- Rust
-		"rust-analyzer",
-
-		-- Configuration
-		"yaml-language-server",
-		"yq",
-		"dockerfile-language-server",
-		"terraform-ls",
-	},
-
+	ensure_installed = mason_ensure_installed,
 	ui = {
 		icons = {
 			package_installed = "✓",
@@ -98,12 +100,16 @@ M.mason = {
 	},
 }
 
+M.mason_installer = {
+	ensure_installed = mason_ensure_installed,
+	auto_update = true,
+}
+
 M.conform = {
 	formatters_by_ft = {
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
 		-- python = { "isort", "black" },
-		python = { "blue" },
 		-- python = { "autopep8" },
 		-- Use a sub-list to run only the first available formatter
 		javascript = { { "prettierd", "prettier" } },
@@ -111,10 +117,6 @@ M.conform = {
 		typescript = { "deno" },
 
 		go = { "gofumpt", "golines" },
-
-		yaml = { "yq" },
-
-		sh = { "shfmt" },
 
 		c = { "clang-format" },
 

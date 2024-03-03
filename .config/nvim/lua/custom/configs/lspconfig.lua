@@ -9,7 +9,9 @@ local servers = {
 	"cssls",
 	"clangd",
 	"gopls",
-	"pylsp",
+	-- "pylsp",
+	"pyright",
+	"ruff_lsp",
 	"yamlls",
 	"tsserver",
 	"htmx",
@@ -30,7 +32,9 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-lspconfig.pylsp.setup({ filetypes = { "python" } })
+-- lspconfig.pylsp.setup({ filetypes = { "python" } })
+lspconfig.pyright.setup({ filetypes = { "python" } })
+lspconfig.ruff_lsp.setup({ filetypes = { "python" } })
 
 lspconfig.yamlls.setup({
 	format = {
