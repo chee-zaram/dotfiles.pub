@@ -166,16 +166,12 @@ M.gopher = {
 }
 
 M.todo = {
-	plugin = true,
-
 	n = {
 		["<leader>ft"] = { "<cmd> TodoTelescope <CR>", "Open todo list in telescope", opts = opts },
 	},
 }
 
 M.trouble = {
-	plugin = true,
-
 	n = {
 		["<leader>tr"] = { "<cmd> TroubleToggle <CR>", "See all diagonstic troubles ", opts = opts },
 	},

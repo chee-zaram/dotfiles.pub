@@ -67,7 +67,7 @@ local plugins = {
 	},
 
 	{
-		"tpope/vim-fugitive", -- Use git commands from withig neovim
+		"tpope/vim-fugitive", -- Use git commands from within neovim
 		lazy = false,
 		config = function()
 			require("custom.configs.fugitive")
@@ -144,18 +144,6 @@ local plugins = {
 		end,
 	},
 
-	--[[ {
-		"hrsh7th/nvim-cmp",
-		lazy = false,
-		config = function()
-			require("plugins.configs.cmp")
-		end,
-		dependencies = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lsp",
-		},
-	}, ]]
-
 	-- Debugger
 	{
 		"mfussenegger/nvim-dap",
@@ -204,9 +192,8 @@ local plugins = {
 	},
 
 	{
-
 		"folke/todo-comments.nvim",
-		lazy = false,
+		cmd = "TodoTelescope",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function(_, opts)
 			require("todo-comments").setup(opts)
@@ -216,8 +203,7 @@ local plugins = {
 
 	{
 		"folke/trouble.nvim",
-		-- lazy = false,
-		keys = "<leader>tr",
+		cmd = "TroubleToggle",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function(_, opts)
 			require("trouble").setup(opts)
