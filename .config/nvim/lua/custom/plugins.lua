@@ -226,12 +226,6 @@ local plugins = {
 	},
 
 	{
-		"navarasu/onedark.nvim", -- For atom inspired theme
-		lazy = false,
-		opts = options.onedark,
-	},
-
-	{
 		"jcdickinson/codeium.nvim",
 		event = "InsertEnter",
 		dependencies = {

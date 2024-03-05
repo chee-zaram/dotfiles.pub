@@ -131,19 +131,6 @@ M.conform = {
 	},
 }
 
--- One dark configuration options
-M.onedark = {
-	style = "darker",
-	transparent = true,
-	lualine = {
-		transparent = true,
-	},
-	code_style = {
-		functions = "bold",
-		variables = "none",
-	},
-}
-
 M.cmp = {
 	sources = {
 		{ name = "nvim_lsp" },
