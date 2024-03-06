@@ -28,7 +28,6 @@ vim.opt.backup = false
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
-vim.opt.expandtab = false
 vim.opt.scrolloff = 200
 vim.opt.shell = "zsh"
 vim.opt.backupskip = "/tmp/*,/private/tmp/*"
@@ -39,14 +38,14 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.breakindent = true
 vim.opt.smarttab = true
-vim.opt.tabstop = 4
+vim.opt.tabstop = 2
 vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.incsearch = true
 vim.opt.cursorline = true
-vim.opt.ai = true -- Auto indent
-vim.opt.si = true -- Smart indent
+vim.opt.ai = true    -- Auto indent
+vim.opt.si = true    -- Smart indent
 vim.opt.wrap = false -- No wrap lines
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
@@ -64,8 +63,8 @@ vim.opt.formatoptions:append({ "r" })
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
-	pattern = "*",
-	command = "set nopaste",
+  pattern = "*",
+  command = "set nopaste",
 })
 
 -- For abbreviation of frequently misspelled words
@@ -78,9 +77,9 @@ vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({ extension = { tmpl = "tmpl" } })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlights yanked text",
-	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+  desc = "Highlights yanked text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
