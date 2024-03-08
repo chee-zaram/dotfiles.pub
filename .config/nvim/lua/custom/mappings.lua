@@ -214,7 +214,7 @@ M.crates = {
 
 M.obsession = {
   n = {
-    ["<leader>ss"] = { "<CMD> Obsession . <CR>", "Save session file in current directory", opts = opts },
+    ["<leader>ss"] = { "<CMD>Obsession .<CR>", "Save session file in current directory", opts = opts },
   },
 }
 
