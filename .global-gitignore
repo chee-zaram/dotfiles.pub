@@ -2,6 +2,7 @@
 !*/
 !*.*
 Session.vim
+*-lock.json
 
 # Local OS metadata
 .DS_Store
