@@ -7,7 +7,7 @@ official docs or those publicly available and extend or customize them per my ne
 
 Feel free to peek and hopefully you find something you like.
 
-And oh, **I use Arch BTW 😉**.
+**I use Arch BTW**.
 
 ### Things to do before starting stow
 
@@ -39,3 +39,7 @@ attempt to run `stow .` it runs successfully without errors.
 
 Make sure to go through the config files to find out what dependencies are
 specified in the config files you'll be using and install them.
+
+### Inspiration
+
+[Elliott Minns' dotfiles](https://github.com/elliottminns/dotfiles/)
