@@ -2,11 +2,6 @@ require "nvchad.options"
 
 vim.g.mapleader = " "
 
--- My local init
--- Leader to space
--- vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
---
 -- -- Highlights
 vim.opt.cursorline = true
 vim.wo.colorcolumn = "80"
@@ -17,8 +12,6 @@ vim.opt.pumblend = 5
 vim.opt.background = "dark"
 --
 -- -- Base
--- vim.cmd "autocmd!"
---
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"

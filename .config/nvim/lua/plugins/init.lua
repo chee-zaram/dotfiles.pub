@@ -3,7 +3,7 @@ local options = require "overrides"
 return {
   {
     "stevearc/conform.nvim",
-    lazy = false,
+    event = "BufWritePost",
     config = function()
       require "configs.conform"
     end,
@@ -40,25 +40,13 @@ return {
           return require "configs.null-ls"
         end,
       },
+
+      { "folke/neodev.nvim" },
     },
 
     config = function()
-      require "configs.lspconfig"
-    end,
-  },
-
-  "folke/neodev.nvim",
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = options.treesitter,
-  },
-
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
       require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
+      require("configs.lspconfig")
     end,
   },
 
@@ -75,8 +63,8 @@ return {
   },
 
   {
-    "tpope/vim-fugitive", -- Use git commands from within neovim
-    lazy = false,
+    "tpope/vim-fugitive",
+    cmd = { "Git", "G", "Gwrite", "GMove", "GDelete", "GRemove" },
     config = function()
       require "configs.fugitive"
     end,
@@ -84,14 +72,14 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      { "nvim-treesitter/nvim-treesitter-context" },
+    },
     opts = options.treesitter,
   },
 
-  { "nvim-treesitter/nvim-treesitter-context", lazy = false },
-
   {
     "nvim-telescope/telescope.nvim",
-    lazy = false,
     config = function()
       require "nvchad.configs.telescope"
       require "configs.telescope"
@@ -155,10 +143,6 @@ return {
     opts = function()
       return vim.tbl_deep_extend("force", require("nvchad.configs.cmp"), options.cmp)
     end,
-    --
-    -- config = function(_, opts)
-    --   require("cmp").setup(opts)
-    -- end,
   },
 
   -- Debugger
@@ -222,8 +206,7 @@ return {
 
   {
     "christoomey/vim-tmux-navigator",
-    lazy = false,
-    keys = { "<C-j>", "<C-k>", "<C-l>", "<C-h>" },
+    cmd = { "TmuxNavigateLeft", "TmuxNavigateRight", "TmuxNavigateUp", "TmuxNavigateDown" },
   },
 
   {

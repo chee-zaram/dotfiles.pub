@@ -60,12 +60,12 @@ get_wifi_list() {
 		sed_range="1,4d"
 	else
 		# Treat connected network line specially because of the presence of '>' symbol.
-		connected_network=$(echo "$networks" | sed -n '5p' | sed 's/\*\*.*//' | sed 's/^....................//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//')
+		connected_network=$(echo "$networks" | sed -n '5p' | sed 's/\*\*.*//' | sed 's/^....................//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//' | grep -v '^$')
 		sed_range="1,5d"
 	fi
 
 	local wifi_list
-	wifi_list=$(echo "$networks" | sed "$sed_range" | grep -v '^$' | sed 's/\*.*//' | sed 's/^....//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//')
+	wifi_list=$(echo "$networks" | sed "$sed_range" |  sed 's/\*.*//' | sed 's/^....//g' | cut -d" " -f1- | awk '{$NF=""; print $0}' | sed 's/ $//' | grep -v '^$')
 	test -n "$connected_network" && echo -e "$connected_network\n$wifi_list"
 }
 

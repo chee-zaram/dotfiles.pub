@@ -75,7 +75,6 @@ local mason_ensure_installed = {
   "pyright",
   "ruff-lsp",
   "mypy",
-  -- "autopep8",
 
   -- Shell
   "bash-language-server",
