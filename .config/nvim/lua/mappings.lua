@@ -404,12 +404,6 @@ map(
   "<Cmd>Lspsaga rename<CR>",
   vim.tbl_extend("keep", { desc = "Rename identifier" }, opts)
 )
-map(
-  "i",
-  "<C-k",
-  "<Cmd>lua vim.lsp.buf.signature_help()<CR>",
-  vim.tbl_extend("keep", { desc = "Signature help" }, opts)
-)
 
 -- Crates
 map("n", "<leader>rcu", function()
