@@ -3,7 +3,7 @@ local options = require "overrides"
 return {
   {
     "stevearc/conform.nvim",
-    event = "BufWritePost",
+    event = "BufWritePre",
     config = function()
       require "configs.conform"
     end,
@@ -275,14 +275,4 @@ return {
       ft_blocklist = { "markdown" },
     },
   },
-
-  {
-    "folke/noice.nvim",
-    event = "CmdLineEnter",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    opts = options.noice,
-  }
 }
