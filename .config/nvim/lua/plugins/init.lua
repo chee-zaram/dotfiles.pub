@@ -275,4 +275,14 @@ return {
       ft_blocklist = { "markdown" },
     },
   },
+
+  {
+    "folke/noice.nvim",
+    event = "CmdLineEnter",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    opts = options.noice,
+  }
 }
