@@ -140,3 +140,13 @@ function lg()
             rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
     fi
 }
+
+function nvims() {
+  items=("default" "kickstart" "chad")
+  config=$(printf "%s\n" ${items[@]} | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  [[ -z $config ]] && echo "Nothing selected" && return 0;
+
+  [[ $config == "default" ]] && config=""
+
+  NVIM_APPNAME=$config nvim $@
+}
