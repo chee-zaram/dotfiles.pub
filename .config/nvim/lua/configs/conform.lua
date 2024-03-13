@@ -6,21 +6,23 @@ local options = {
     -- python = { "autopep8" },
     -- Use a sub-list to run only the first available formatter
     javascript = { { "prettierd", "prettier" } },
-
     typescript = { "prettier" },
-
     go = { "gofumpt", "golines" },
-
     c = { "clang-format" },
-
     markdown = { "prettier" },
-
     yaml = { "prettier" },
+    sh = { "shfmt" },
   },
 
   format_on_save = {
     lsp_fallback = true,
     timeout_ms = 500,
+  },
+
+  formatters = {
+    shfmt = {
+      prepend_args = { "-i", "2", "-ci", "-bn" },
+    },
   },
 }
 
