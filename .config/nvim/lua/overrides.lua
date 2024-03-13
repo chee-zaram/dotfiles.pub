@@ -157,4 +157,10 @@ M.noice = {
   },
 }
 
+M.blankline = {
+  scope = {
+    enabled = false,
+  },
+}
+
 return M

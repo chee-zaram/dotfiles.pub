@@ -275,4 +275,9 @@ return {
       ft_blocklist = { "markdown" },
     },
   },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = options.blankline,
+  }
 }
