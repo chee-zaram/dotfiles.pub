@@ -183,24 +183,6 @@ map(
   ":Git diff<Return>",
   vim.tbl_extend("keep", { desc = "Fugitive Bring up the file diff side by side" }, opts)
 )
-map(
-  "n",
-  "<leader>gl",
-  ":G log --oneline<Return>",
-  vim.tbl_extend("keep", { desc = "Fugitive Git log oneline" }, opts)
-)
-map(
-  "n",
-  "<leader>ga",
-  ":Git add<Return>",
-  vim.tbl_extend("keep", { desc = "Fugitive Add current file to git" }, opts)
-)
-map(
-  "n",
-  "<leader>gs",
-  ":G<Return>",
-  vim.tbl_extend("keep", { desc = "Fugitive Status of the git repository" }, opts)
-)
 
 -- NvimTreeToggle
 map(
