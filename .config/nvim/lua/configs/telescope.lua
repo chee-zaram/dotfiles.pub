@@ -117,3 +117,10 @@ vim.keymap.set(
   builtin.lsp_dynamic_workspace_symbols,
   { desc = "Symbols across entire project" }
 )
+
+vim.keymap.set(
+  "n",
+  "<leader>gbr",
+  "<CMD>Telescope git_branches<CR>",
+  { desc = "Symbols across entire project" }
+)

@@ -14,6 +14,7 @@ M.treesitter = {
   ensure_installed = {
     -- defaults
     "vim",
+    "vimdoc",
     "lua",
     "comment",
     "gitcommit",
