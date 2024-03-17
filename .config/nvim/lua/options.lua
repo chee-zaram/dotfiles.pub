@@ -5,7 +5,6 @@ vim.g.mapleader = " "
 -- -- Highlights
 vim.opt.cursorline = true
 vim.wo.colorcolumn = "80"
-vim.opt.termguicolors = true
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 5
