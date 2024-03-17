@@ -42,6 +42,7 @@ return {
       },
 
       { "folke/neodev.nvim" },
+      { "j-hui/fidget.nvim" },
     },
 
     config = function()
@@ -292,5 +293,27 @@ return {
     config = function(_, _)
       require "configs.git"
     end
-  }
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup({
+        background_colour = "#000000",
+        enabled = false,
+      })
+    end
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = options.noice,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  },
+
+  { "ray-x/go.nvim", ft = "go" },
 }
