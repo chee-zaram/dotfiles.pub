@@ -5,7 +5,7 @@ return {
   -- color_scheme = 'Catppuccin Mocha',
   color_scheme = 'Oxocarbon Dark (Gogh)',
   enable_tab_bar = false,
-  font_size = 13.0,
+  font_size = 12.0,
   window_background_opacity = 1.0,
   window_decorations = 'RESIZE',
   keys = {
