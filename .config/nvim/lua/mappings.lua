@@ -326,12 +326,6 @@ map(
 -- LSP Saga
 map(
   "n",
-  "<C-n>",
-  "<CMD> Lspsaga diagnostic_jump_next <CR>",
-  vim.tbl_extend("keep", { desc = "LSPSaga Go to next error" }, opts)
-)
-map(
-  "n",
   "K",
   "<CMD> Lspsaga hover_doc <CR>",
   vim.tbl_extend("keep", { desc = "LSPSaga Get documentation" }, opts)
