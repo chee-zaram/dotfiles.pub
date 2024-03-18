@@ -204,7 +204,7 @@ mode "$mode_system" {
 }
 
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
-exec feh --bg-scale "/home/cheezaram/Pictures/Wal/bg6.jpg"
+exec feh --bg-scale "/home/cheezaram/Pictures/Wal/bg3.jpg"
 exec --no-startup-id compton
 
 bar {
