@@ -1,6 +1,8 @@
-require "nvchad.options"
+vim.schedule(function()
+  require "mappings"
+end)
 
-vim.g.mapleader = " "
+require "nvchad.options"
 
 -- -- Highlights
 vim.opt.cursorline = true
@@ -58,12 +60,6 @@ vim.cmd [[let &t_Ce = "\e[4:0m"]]
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { "r" }
 
--- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = "*",
-  command = "set nopaste",
-})
-
 -- For abbreviation of frequently misspelled words
 vim.cmd.ia { "mian", "main" }
 vim.cmd.ia { "amin", "main" }
@@ -72,15 +68,3 @@ vim.cmd.ia { "inlcude", "include" }
 -- templ
 vim.filetype.add { extension = { templ = "templ" } }
 vim.filetype.add { extension = { tmpl = "tmpl" } }
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlights yanked text",
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "TermOpen" }, {
-  command = "stopinsert",
-})
