@@ -29,7 +29,7 @@ map(
 
 map(
   "n",
-  "<leader>gll",
+  "<leader>gl",
   function()
     neogit.open { "log" }
   end
