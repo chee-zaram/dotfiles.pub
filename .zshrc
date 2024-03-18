@@ -3,29 +3,29 @@ fpath+=(${ZDOTDIR:-~}/.zsh_functions)
 
 ################################### p10k. ###################################
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 
 ##################################### ENV #####################################
 if [[ -d "$HOME/bin" && ! "$PATH" == *"$HOME/bin"* ]]; then
-    PATH="${PATH:+${PATH}:}$HOME/bin"
+  PATH="${PATH:+${PATH}:}$HOME/bin"
 fi
 
 if [[ -d "/usr/local/bin" && ! "$PATH" == */usr/local/bin* ]]; then
-    PATH="${PATH:+${PATH}:}/usr/local/bin"
+  PATH="${PATH:+${PATH}:}/usr/local/bin"
 fi
 
 if [[ -d "$HOME/.bin" && ! "$PATH" == *"$HOME/.bin"* ]]; then
-    PATH="${PATH:+${PATH}:}$HOME/.bin"
+  PATH="${PATH:+${PATH}:}$HOME/.bin"
 fi
 
 if [[ -d "$HOME/.local/bin" && ! "$PATH" == *"$HOME/.local/bin"* ]]; then
-    PATH="${PATH:+${PATH}:}$HOME/.local/bin"
+  PATH="${PATH:+${PATH}:}$HOME/.local/bin"
 fi
 
 if [[ -d "$HOME/.emacs.d/bin" && ! "$PATH" == *"$HOME/.emacs.d/bin"* ]]; then
-    PATH="${PATH:+${PATH}:}$HOME/.emacs.d/bin"
+  PATH="${PATH:+${PATH}:}$HOME/.emacs.d/bin"
 fi
 
 #################################### Go. ####################################
@@ -35,13 +35,13 @@ fi
 
 if command -v go >/dev/null 2>&1; then
   if [[ -d "$HOME/.go" ]]; then
-      export GOPATH="$HOME/.go"
-      mkdir -p "$GOPATH/bin"
+    export GOPATH="$HOME/.go"
+    mkdir -p "$GOPATH/bin"
 
-      if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
-          export GOBIN="$GOPATH/bin"
-          export PATH="${PATH:+${PATH}:}$GOBIN"
-      fi
+    if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
+      export GOBIN="$GOPATH/bin"
+      export PATH="${PATH:+${PATH}:}$GOBIN"
+    fi
   else
     export GOBIN="$(go env GOPATH)/bin"
     export PATH="$PATH:$(go env GOBIN)"
@@ -55,24 +55,24 @@ fi
 
 ############################### Namespace Cloud. ##############################
 if [[ -d "$HOME/.ns" ]]; then
-    export NS_ROOT="$HOME/.ns"
-    mkdir -p "$NS_ROOT/bin"
+  export NS_ROOT="$HOME/.ns"
+  mkdir -p "$NS_ROOT/bin"
 
-    [[ ! "$PATH" == *"$NS_ROOT/bin"* ]] && export PATH="${PATH:+${PATH}:}$NS_ROOT/bin"
+  [[ ! "$PATH" == *"$NS_ROOT/bin"* ]] && export PATH="${PATH:+${PATH}:}$NS_ROOT/bin"
 fi
 
 
 ################################# LuaLSP setup ################################
 if [[ -d "$HOME/.config/lsp/lua-language-server/bin" ]]; then
-    if [[ ! "$PATH" == *"$HOME/.config/lsp/lua-language-server/bin"* ]]; then
-        export PATH="${PATH:+${PATH}:}$HOME/.config/lsp/lua-language-server/bin"
-    fi
+  if [[ ! "$PATH" == *"$HOME/.config/lsp/lua-language-server/bin"* ]]; then
+    export PATH="${PATH:+${PATH}:}$HOME/.config/lsp/lua-language-server/bin"
+  fi
 fi
 
 
 ################################## MAN setup ##################################
 if [[ -d "/usr/local/man" && ! "$MANPATH" == */usr/local/man* ]]; then
-    MANPATH="${MANPATH:+${MANPATH}:}/usr/local/man"
+  MANPATH="${MANPATH:+${MANPATH}:}/usr/local/man"
 fi
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -109,16 +109,16 @@ ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 plugins=(
-    git
-    zsh-autosuggestions
-    vi-mode
-    colored-man-pages
-    urltools
-    web-search
-    zsh-navigation-tools
-    zsh-interactive-cd
-    kube-ps1
-    fzf-zsh-plugin fzf-tab
+  git
+  zsh-autosuggestions
+  vi-mode
+  colored-man-pages
+  urltools
+  web-search
+  zsh-navigation-tools
+  zsh-interactive-cd
+  kube-ps1
+  fzf-zsh-plugin fzf-tab
 )
 
 ### Uncomment only if zsh-vi-mode plugin is set and vi-mode is not set ###
@@ -132,18 +132,18 @@ bindkey -M viins 'jk' vi-cmd-mode
 
 # zoxide
 if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init --cmd cd zsh)"
+  eval "$(zoxide init --cmd cd zsh)"
 
-    test -f "$HOME/.z" && zoxide import --from=z --merge "$HOME/.z"
+  test -f "$HOME/.z" && zoxide import --from=z --merge "$HOME/.z"
 fi
 
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
+  export EDITOR='vim'
 else
-    export EDITOR='nvim'
+  export EDITOR='nvim'
 fi
 
 # For starting the ssh agent on shell startup
@@ -183,7 +183,7 @@ test -f ~/.kubectl_aliases && source ~/.kubectl_aliases
 
 # Enable autocompletion for kubectl
 if command -v kubectl >/dev/null 2>&1; then
-    source <(kubectl completion zsh)
+  source <(kubectl completion zsh)
 fi
 # or the one below if the file is present.
 # [[ -f "$HOME/.kubectl_completion.sh" ]] && source "$HOME/.kubectl_completion.sh"
@@ -203,7 +203,7 @@ test -f "$AWS_ZSH_COMPLETER" && source "$AWS_ZSH_COMPLETER"
 ################################### MODUlAR ###################################
 export MODULAR_HOME="/home/cheezaram/.modular"
 if [[ -d "$MODULAR_HOME" && ! "$PATH" == *"$MODULAR_HOME/pkg/packages.modular.com_mojo/bin"* ]]; then
-    export PATH="${PATH:+${PATH}:}$MODULAR_HOME/pkg/packages.modular.com_mojo/bin"
+  export PATH="${PATH:+${PATH}:}$MODULAR_HOME/pkg/packages.modular.com_mojo/bin"
 fi
 
 
@@ -212,13 +212,13 @@ fi
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/cheezaram/.anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/home/cheezaram/.anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/cheezaram/.anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/cheezaram/.anaconda3/bin:$PATH"
-    fi
+  if [ -f "/home/cheezaram/.anaconda3/etc/profile.d/conda.sh" ]; then
+    . "/home/cheezaram/.anaconda3/etc/profile.d/conda.sh"
+  else
+    export PATH="/home/cheezaram/.anaconda3/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
