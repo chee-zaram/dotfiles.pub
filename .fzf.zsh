@@ -17,5 +17,5 @@ export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden)'"
 
-export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
+export FZF_DEFAULT_COMMAND='fd --type file --follow -u --exclude .git --color=always'
 export FZF_DEFAULT_OPTS="--ansi"
