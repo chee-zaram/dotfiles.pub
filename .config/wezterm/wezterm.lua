@@ -8,13 +8,6 @@ return {
   font_size = 12.0,
   window_background_opacity = 1.0,
   window_decorations = 'RESIZE',
-  keys = {
-    {
-      key = 'f',
-      mods = 'CTRL',
-      action = wezterm.action.ToggleFullScreen,
-    },
-  },
   mouse_bindings = {
     -- Ctrl-click will open the link under the mouse cursor
     {
