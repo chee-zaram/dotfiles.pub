@@ -5,8 +5,11 @@ end
 local actions = require "telescope.actions"
 local builtin = require "telescope.builtin"
 local themes = require "telescope.themes"
-
 local fb_actions = require("telescope").extensions.file_browser.actions
+
+pcall(telescope.load_extension, "fzf")
+pcall(telescope.load_extension, "ui-select")
+pcall(telescope.load_extension, "file_browser")
 
 telescope.setup {
   defaults = {
@@ -39,8 +42,6 @@ telescope.setup {
     },
   },
 }
-
-telescope.load_extension "file_browser"
 
 -- Find files in the project by searching
 vim.keymap.set("n", ";f", function()
