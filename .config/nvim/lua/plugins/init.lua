@@ -314,5 +314,6 @@ return {
     }
   },
 
-  { "ray-x/go.nvim", ft = "go" },
+  { "ray-x/go.nvim",         ft = "go" },
+  { "tjdevries/cyclist.vim", lazy = false },
 }
