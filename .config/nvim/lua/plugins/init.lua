@@ -53,7 +53,7 @@ return {
 
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    lazy = false,
+    event = "BufReadPost",
     dependencies = {
       {
         "williamboman/mason.nvim",
