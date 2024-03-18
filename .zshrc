@@ -46,6 +46,10 @@ if command -v go >/dev/null 2>&1; then
     export GOBIN="$(go env GOPATH)/bin"
     export PATH="$PATH:$(go env GOBIN)"
   fi
+
+  if [[ -d "/usr/lib/go" && ! "$PATH" == *"/usr/lib/go"* ]]; then
+    export PATH="$PATH:/usr/lib/go"
+  fi
 fi
 
 
