@@ -41,10 +41,14 @@ local servers = {
       },
     },
   },
-  -- pylsp = {},
 
-  pyright = {
+  basedpyright = {
     filetypes = { "python" },
+    settings = {
+      basedpyright = {
+        typeCheckingMode = "standard",
+      },
+    },
   },
 
   ruff_lsp = {

@@ -1,17 +1,17 @@
+local ok, conform = pcall(require, "conform")
+if not ok then return end
+
 local options = {
   formatters_by_ft = {
-    lua = { "stylua" },
-    -- Conform will run multiple formatters sequentially
-    -- python = { "isort", "black" },
-    -- python = { "autopep8" },
-    -- Use a sub-list to run only the first available formatter
-    javascript = { { "prettierd", "prettier" } },
-    typescript = { "prettier" },
-    go = { "gofumpt", "golines" },
     c = { "clang-format" },
+    go = { "gofumpt", "golines" },
+    javascript = { { "prettierd", "prettier" } },
+    json = { "biome" },
+    lua = { "stylua" },
     markdown = { "prettier" },
-    yaml = { "prettier" },
     sh = { "shfmt" },
+    typescript = { "prettier" },
+    yaml = { "prettier" },
   },
 
   format_on_save = {
@@ -26,4 +26,12 @@ local options = {
   },
 }
 
-require("conform").setup(options)
+vim.keymap.set("n", "<leader>sp", function()
+  conform.format({
+    formatters = {
+      "codespell",
+    },
+  })
+end)
+
+conform.setup(options)

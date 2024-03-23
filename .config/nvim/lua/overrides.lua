@@ -48,6 +48,9 @@ M.treesitter = {
 }
 
 local mason_ensure_installed = {
+  -- Generic
+  "codespell",
+
   -- Web dev
   "css-lsp",
   "html-lsp",
@@ -55,6 +58,7 @@ local mason_ensure_installed = {
   "typescript-language-server",
   "prettier",
   "tailwindcss-language-server",
+  "biome",
 
   -- C
   "clangd",
@@ -71,9 +75,8 @@ local mason_ensure_installed = {
   "templ",
 
   -- Python
-  -- "python-lsp-server",
   "debugpy",
-  "pyright",
+  "basedpyright",
   "ruff-lsp",
   "mypy",
 
