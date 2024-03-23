@@ -128,7 +128,7 @@ function docker_rm_stopped() {
 }
 
 # lg let's lazygit change the user into the directory they were in before
-# quiting lazygit.
+# quitting lazygit.
 function lg()
 {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
@@ -142,7 +142,7 @@ function lg()
 }
 
 function nvims() {
-  items=("default" "kickstart" "chad")
+  items=("default" "kickstart" "chad" "lazynvim")
   config=$(printf "%s\n" ${items[@]} | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   [[ -z $config ]] && echo "Nothing selected" && return 0;
 

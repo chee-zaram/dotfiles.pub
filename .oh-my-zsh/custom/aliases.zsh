@@ -44,7 +44,7 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# Confirm before overwritting
+# Confirm before overwriting
 alias mv='mv -i'
 alias rm='rm -i'
 
@@ -89,3 +89,4 @@ alias aws="AWS_ACCESS_KEY_ID='$(pass show Credentials/AWS/Personal/key_id)' AWS_
 # NVIM APP_NAME
 alias nvim-kickstart="NVIM_APPNAME=kickstart nvim"
 alias nvim-chad="NVIM_APPNAME=chad nvim"
+alias nvim-lazy="NVIM_APPNAME=lazynvim nvim"
