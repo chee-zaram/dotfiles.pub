@@ -43,29 +43,6 @@ telescope.setup {
   },
 }
 
--- Find files in the project by searching
-vim.keymap.set("n", ";f", function()
-  builtin.find_files {
-    no_ignore = false,
-    hidden = true,
-  }
-end)
-
--- Do live grep of all string in project
-vim.keymap.set("n", ";r", function()
-  builtin.live_grep()
-end)
-
--- See a list of current buffers
-vim.keymap.set("n", "\\\\", function()
-  builtin.buffers()
-end)
-
--- Display help tags
-vim.keymap.set("n", ";t", function()
-  builtin.help_tags()
-end)
-
 -- Resume to last spot in telescope
 vim.keymap.set("n", ";;", function()
   builtin.resume()
@@ -75,20 +52,6 @@ end)
 vim.keymap.set("n", ";e", function()
   builtin.diagnostics()
 end)
-
--- File browser
-vim.keymap.set("n", "sf", function()
-  telescope.extensions.file_browser.file_browser {
-    path = "%:p:h",
-    -- cwd = telescope_buffer_dir(),
-    respect_gitignore = false,
-    hidden = true,
-    grouped = true,
-    -- previewer = false,
-    initial_mode = "normal",
-    -- layout_config = { height = 40 },
-  }
-end, { noremap = true })
 
 -- Fuzzily find in the current buffer
 vim.keymap.set("n", "<leader>/", function()
@@ -102,26 +65,46 @@ vim.keymap.set(
   "n",
   "<leader>sw",
   builtin.grep_string,
-  { desc = "Search current word" }
+  { desc = "Telescope Search current word" }
 )
 
 vim.keymap.set(
   "n",
   "<leader>ds",
   builtin.lsp_document_symbols,
-  { desc = "Symbols in the current document" }
+  { desc = "Telescope Symbols in the current document" }
 )
 
 vim.keymap.set(
   "n",
   "<leader>ws",
   builtin.lsp_dynamic_workspace_symbols,
-  { desc = "Symbols across entire project" }
+  { desc = "Telescope Symbols across entire project" }
 )
 
 vim.keymap.set(
   "n",
   "<leader>gbr",
   "<CMD>Telescope git_branches<CR>",
-  { desc = "Symbols across entire project" }
+  { desc = "Telescope Symbols across entire project" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>sm",
+  "<cmd>Telescope marks<cr>",
+  { desc = "Telescope Jump to Mark" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>sM",
+  "<cmd>Telescope man_pages<cr>",
+  { desc = "Telescope Man Pages" }
+)
+
+vim.keymap.set(
+  "n", '<leader>s"',
+  "<cmd>Telescope registers<cr>",
+  { desc = "Telescope Registers" }
 )
