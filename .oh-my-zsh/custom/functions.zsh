@@ -142,7 +142,7 @@ function lg()
 }
 
 function nvims() {
-  items=("default" "kickstart" "chad" "lazynvim")
+  items=("default" "kickstart" "nvchad" "lazyvim")
   config=$(printf "%s\n" ${items[@]} | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   [[ -z $config ]] && echo "Nothing selected" && return 0;
 

@@ -88,5 +88,5 @@ alias aws="AWS_ACCESS_KEY_ID='$(pass show Credentials/AWS/Personal/key_id)' AWS_
 
 # NVIM APP_NAME
 alias nvim-kickstart="NVIM_APPNAME=kickstart nvim"
-alias nvim-chad="NVIM_APPNAME=chad nvim"
-alias nvim-lazy="NVIM_APPNAME=lazynvim nvim"
+alias nvim-chad="NVIM_APPNAME=nvchad nvim"
+alias nvim-lazy="NVIM_APPNAME=lazyvim nvim"
