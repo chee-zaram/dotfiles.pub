@@ -385,3 +385,25 @@ map(
   ":Silicon <CR> ",
   vim.tbl_extend("keep", { desc = "NVIM-Silicon Screenshot Code" }, opts)
 )
+
+map({ "n", "v", "t" }, "<C-b>", function()
+  require("nvchad.term").runner {
+    id = "RunAndBuildTerminal",
+    pos = "float",
+    cmd = function()
+      local file = vim.fn.expand "%"
+      local sfile = vim.fn.expand "%:r"
+      local ft_cmds = {
+        sh = "bash " .. file,
+        rust = "cargo " .. file,
+        python = "python3 " .. file,
+        javascript = "node " .. file,
+        go = "go build && go run " .. file,
+        c = "g++ " .. file .. " -o " .. sfile .. " && ./" .. sfile,
+        cpp = "g++ " .. file .. " -o " .. sfile .. " && ./" .. sfile,
+        typescript = "deno compile " .. file .. " && deno run " .. file,
+      }
+      return ft_cmds[vim.bo.ft]
+    end,
+  }
+end, { desc = "Base Build and Run file" })
