@@ -5,7 +5,7 @@ end)
 require "nvchad.options"
 
 -- -- Highlights
-vim.opt.cursorline = true
+vim.opt.cursorlineopt = "both"
 vim.wo.colorcolumn = "80"
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
