@@ -86,9 +86,6 @@ local servers = {
     filetypes = { "astro", "javascript", "typescript", "react" },
   },
 
-  rust_analyzer = {
-  },
-
   terraformls = {
     filetypes = { "terraform" },
     cmd = { "terraform-ls", "serve" },
