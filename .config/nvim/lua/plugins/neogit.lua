@@ -6,7 +6,7 @@ return {
       "sindrets/diffview.nvim",
       "nvim-telescope/telescope.nvim",
     },
-    keys = { "<leader>gs", "<leader>gc", "<leader>gll" },
+    keys = { "<leader>go", "<leader>gs", "<leader>gc", "<leader>gll" },
     config = function(_, _)
       require "configs.git"
     end

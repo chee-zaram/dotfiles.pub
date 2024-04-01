@@ -14,9 +14,18 @@ local opts = { silent = true }
 
 map(
   "n",
-  "<leader>gs",
+  "<leader>go",
   neogit.open,
   vim.tbl_extend("keep", { desc = "Neogit Status of the git repository" }, opts)
+)
+
+map(
+  "n",
+  "<leader>gs",
+  function()
+    neogit.open { kind = "auto" }
+  end,
+  vim.tbl_extend("keep", { desc = "Neogit Status in split" }, opts)
 )
 
 map(

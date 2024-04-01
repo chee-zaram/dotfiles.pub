@@ -183,6 +183,12 @@ map(
   ":Git diff<Return>",
   vim.tbl_extend("keep", { desc = "Fugitive Bring up the file diff side by side" }, opts)
 )
+map(
+  "n",
+  "<leader>gbl",
+  ":G blame<Return>",
+  vim.tbl_extend("keep", { desc = "Fugitive Git blame" }, opts)
+)
 
 -- NvimTreeToggle
 map(
