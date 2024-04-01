@@ -7,21 +7,36 @@ return {
     require "configs.my-harpoon"
   end,
   keys = function()
+    local harpoon = require "harpoon"
+
     local keys = {
       {
         "<leader>a",
         function()
-          require("harpoon"):list():append()
+          harpoon:list():append()
         end,
         desc = "Harpoon Add File",
       },
       {
         "<leader>h",
         function()
-          local harpoon = require("harpoon")
           harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
         desc = "Harpoon Quick Menu",
+      },
+      {
+        "]h",
+        function()
+          harpoon:list():next()
+        end,
+        desc = "Harpoon Next file",
+      },
+      {
+        "[h",
+        function()
+          harpoon:list():prev()
+        end,
+        desc = "Harpoon Previous file",
       }
     }
 

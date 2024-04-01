@@ -1,11 +1,14 @@
 local ok, harpoon = pcall(require, 'harpoon')
 if not ok then return end
 
-harpoon:setup({
+harpoon:setup {
   menu = {
     width = vim.api.nvim_win_get_width(0) - 4,
   },
-})
+  settings = {
+    save_on_toggle = true,
+  },
+}
 
 -- basic telescope configuration
 local conf = require("telescope.config").values
