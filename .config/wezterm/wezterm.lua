@@ -8,6 +8,7 @@ return {
   font = wezterm.font('JetBrainsMono Nerd Font'),
   window_background_opacity = 1.0,
   window_decorations = 'RESIZE',
+  warn_about_missing_glyphs = false,
   mouse_bindings = {
     -- Ctrl-click will open the link under the mouse cursor
     {
