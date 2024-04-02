@@ -207,6 +207,10 @@ if [[ -d "$MODULAR_HOME" && ! "$PATH" == *"$MODULAR_HOME/pkg/packages.modular.co
 fi
 
 
+#################################### GPG ####################################
+export GPG_TTY=$(tty)
+
+
 #################################### Conda ####################################
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
