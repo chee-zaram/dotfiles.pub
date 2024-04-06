@@ -84,6 +84,9 @@ alias luamake=/home/cheezaram/lua-language-server/3rd/luamake/luamake
 # Open image with given filename using loupe image viewer.
 alias open='loupe'
 
+# View pdf or other documents.
+alias view='evince'
+
 alias aws="AWS_ACCESS_KEY_ID='$(pass show Credentials/AWS/Personal/key_id)' AWS_SECRET_ACCESS_KEY='$(pass show Credentials/AWS/Personal/key_secret)' aws"
 
 # NVIM APP_NAME
