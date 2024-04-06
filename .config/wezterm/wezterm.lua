@@ -4,7 +4,7 @@ if not ok then return end
 return {
   color_scheme = 'Oxocarbon Dark (Gogh)',
   enable_tab_bar = false,
-  font_size = 12.0,
+  font_size = 14.0,
   font = wezterm.font('JetBrainsMono Nerd Font'),
   window_background_opacity = 1.0,
   window_decorations = 'RESIZE',
